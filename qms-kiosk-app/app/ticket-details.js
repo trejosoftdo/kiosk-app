@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
-import TicketDetails from '../src/TicketDetails';
+import { TicketDetailsView } from '../src/views';
 
 export default function Main() {
   return (
@@ -10,7 +10,7 @@ export default function Main() {
             title: 'Detalles de turno',
           }}
         />
-      <TicketDetails />
+      <TicketDetailsView />
     </React.Fragment>
   )
 }

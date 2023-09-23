@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
-import { View } from 'react-native';
-import App from '../src/App';
+import { ChooseServicesView } from '../src/views';
 
 export default function Main() {
   return (
     <React.Fragment>
         <Stack.Screen
-          options={{
-            title: 'Servicios',
-          }}
+          options={{ title: 'Servicios' }}
         />
-      <App />
+      <ChooseServicesView />
     </React.Fragment>
   );
 }
