@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { useTranslation } from 'react-i18next';
 import { router, useLocalSearchParams } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import Header from '../../common/components/Header';
+import LoadingIndicator from '../../common/components/LoadingIndicator';
+import useTicketDetails from '../../hooks/useTicketDetails';
 import Ticket from './Ticket';
 import UsersInQueue from './UsersInQueue';
 import PrintButton from './PrintButton';
-import useTicketDetails from '../../hooks/useTicketDetails';
-import LoadingIndicator from '../../common/components/LoadingIndicator';
+import ErrorMessage from '../../common/components/ErrorMessage';
 
 
 const TicketDetailsView = () => {
@@ -17,16 +19,17 @@ const TicketDetailsView = () => {
     data,
     error,
   } = useTicketDetails(params.service);
+  const { t } = useTranslation();
 
-  const message = loading ? 'Por favor, espere ...' : 'Bienvenido, tu numero de turno es:';
 
-  console.log(data);
+  const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
+
   return (
     <View style={styles.container}>
-      <Header message={message} />
+      <Header message={t(messageKey)} />
       <LoadingIndicator loading={loading} />
       {!loading && data && (
-        <React.Fragment>
+        <>
           <Ticket value={data.details.value} />
           <UsersInQueue total={data.usersInQueue} />
           <PrintButton
@@ -34,11 +37,9 @@ const TicketDetailsView = () => {
               router.push('/');
             }}
           />
-        </React.Fragment>
+        </>
       )}
-      {error && (
-        <View>Error!</View>
-      )}
+      {error && <ErrorMessage />}
       <StatusBar style="auto" />
     </View>
   );

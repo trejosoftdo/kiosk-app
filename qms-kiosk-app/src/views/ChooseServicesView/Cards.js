@@ -4,27 +4,16 @@ import ServiceCard from './ServiceCard';
 
 const Cards = (props) => (
   <View style={styles.container}>
-    <ServiceCard
-      icon="file-multiple"
-      title="Resultados"
-      onPress={() => {
-        props.onServiceSelect('results');
-      }}
-    />
-    <ServiceCard
-      icon="poll"
-      title="Analisis"
-      onPress={() => {
-        props.onServiceSelect('analysis');
-      }}
-    />
-    <ServiceCard
-      icon="information"
-      title="Informacion"
-      onPress={() => {
-        props.onServiceSelect('information');
-      }}
-    />
+    {(props.items || []).map(item => (
+      <ServiceCard
+        key={item.name}  
+        icon={item.icon}
+        title={item.label}
+        onPress={() => {
+          props.onServiceSelect(item.name);
+        }}
+      />
+    ))}
   </View>
 );
 

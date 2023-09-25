@@ -33,11 +33,12 @@ export const loadServices = async () => {
 
 export const loadTicketDetails = async (service) => {
   await delay(2000);
+  const time = new Date().getTime().toString(); 
   return {
     details: {
       id: 'ticket-id',
       service,
-      value: `${service.slice(0, 2).toUpperCase()}${new Date().getTime()}`,
+      value: `${service.slice(0, 2).toUpperCase()}-${time.slice(time.length - 3)}`,
     },
     usersInQueue: 10,
   };

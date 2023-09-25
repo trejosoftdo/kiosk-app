@@ -1,12 +1,16 @@
+import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 
 
-const UsersInQueue = (props) => (
+const UsersInQueue = (props) => {
+  const { t } = useTranslation();
+  return (
   <Text style={styles.container} variant="titleMedium">
-    Hay {props.total} usuarios en espera.
+    {t('translation:usersInQueue', { total: props.total })}
   </Text>
 );
+};
 
 const styles = StyleSheet.create({
   container: {
