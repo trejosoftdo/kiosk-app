@@ -1,5 +1,6 @@
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
+// @ts-ignore
 import icon from '../../../assets/icon.png';
 
 

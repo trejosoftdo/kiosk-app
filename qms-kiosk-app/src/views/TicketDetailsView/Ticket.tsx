@@ -13,7 +13,7 @@ const Ticket = (props) => (
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    flex: 'column',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   number: {
     color: '#00bf63',
-    fontWeight: 600,
+    fontWeight: '600',
     paddingTop: 12,
   },
 });
