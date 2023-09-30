@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { TicketDetailsView } from '../src/views';
 
-export default function TicketDetails() {
+const TicketDetails = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>
@@ -14,5 +14,7 @@ export default function TicketDetails() {
         />
       <TicketDetailsView />
     </React.Fragment>
-  )
-}
+  );
+};
+
+export default TicketDetails;

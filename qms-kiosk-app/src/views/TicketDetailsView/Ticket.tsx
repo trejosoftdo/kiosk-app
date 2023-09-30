@@ -1,7 +1,12 @@
+import { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
 
-const Ticket = (props) => (
+type Props = {
+  value: string;
+};
+
+const Ticket: FC<Props> = (props: Props) => (
   <View style={styles.container}>
     <Avatar.Icon style={styles.icon} icon="ticket-confirmation" /> 
     <Text style={styles.number} variant="headlineLarge">
@@ -13,7 +18,7 @@ const Ticket = (props) => (
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    flex: 'column',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -27,7 +32,7 @@ const styles = StyleSheet.create({
   },
   number: {
     color: '#00bf63',
-    fontWeight: 600,
+    fontWeight: '600',
     paddingTop: 12,
   },
 });

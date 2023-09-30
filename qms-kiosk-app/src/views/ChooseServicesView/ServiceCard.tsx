@@ -1,8 +1,14 @@
+import { FC } from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar, Card, Text } from 'react-native-paper';
 
+type Props = {
+  icon: string;
+  title: string
+  onPress: () => void;
+};
 
-const ServiceCard = (props) => (
+const ServiceCard: FC<Props> = (props: Props) => (
   <Card
     mode="outlined"
     style={styles.container}

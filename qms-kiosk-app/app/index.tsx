@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ChooseServicesView } from '../src/views';
 
 
-export default function Main() {
+ const Home = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>
@@ -14,4 +14,6 @@ export default function Main() {
       <ChooseServicesView />
     </React.Fragment>
   );
-}
+};
+
+export default Home;

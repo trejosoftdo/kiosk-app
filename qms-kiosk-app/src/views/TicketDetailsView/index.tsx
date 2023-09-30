@@ -20,10 +20,7 @@ const TicketDetailsView = () => {
     error,
   } = useTicketDetails(params.service);
   const { t } = useTranslation();
-
-
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
-
   return (
     <View style={styles.container}>
       <Header message={t(messageKey)} />

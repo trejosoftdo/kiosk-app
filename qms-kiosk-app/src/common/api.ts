@@ -1,7 +1,5 @@
-const delay = (timeout) => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve();
-  }, timeout);
+const delay = (timeout): Promise<void> => new Promise((resolve): void => {
+  setTimeout(resolve, timeout);
 });
 
 export const loadServices = async () => {
