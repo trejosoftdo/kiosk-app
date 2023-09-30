@@ -3,10 +3,10 @@ import { Stack } from 'expo-router/stack';
 import { PaperProvider } from 'react-native-paper';
 import '../i18n';
 
-export default function Layout() {
-  return (
-    <PaperProvider>
-      <Stack />
-    </PaperProvider>
-  );
-}
+const Layout = () => (
+  <PaperProvider>
+    <Stack />
+  </PaperProvider>
+);
+
+export default Layout;

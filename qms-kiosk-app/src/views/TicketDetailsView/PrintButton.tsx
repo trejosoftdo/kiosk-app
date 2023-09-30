@@ -1,9 +1,14 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 
+type Props = {
+  onPress: () => void;
+};
 
-const PrintButton = (props) => {
+
+const PrintButton: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
   return (
     <Button

@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 
-
-const ErrorMessage = (props) => {
+const ErrorMessage = () => {
   const { t } = useTranslation();
   return (
     <Text style={styles.message} variant="titleMedium">

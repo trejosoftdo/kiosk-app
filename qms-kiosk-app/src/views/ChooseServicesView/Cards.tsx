@@ -1,10 +1,18 @@
 import { StyleSheet, View } from 'react-native';
 import ServiceCard from './ServiceCard';
 
+type Props = {
+  items: {
+    name: string;
+    icon: string;
+    label: string;
+  }[];
+  onServiceSelect: (name: string) => void;
+};
 
-const Cards = (props) => (
+const Cards = (props: Props) => (
   <View style={styles.container}>
-    {(props.items || []).map(item => (
+    {props.items.map(item => (
       <ServiceCard
         key={item.name}  
         icon={item.icon}

@@ -1,7 +1,12 @@
+import { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
 
-const Ticket = (props) => (
+type Props = {
+  value: string;
+};
+
+const Ticket: FC<Props> = (props: Props) => (
   <View style={styles.container}>
     <Avatar.Icon style={styles.icon} icon="ticket-confirmation" /> 
     <Text style={styles.number} variant="headlineLarge">

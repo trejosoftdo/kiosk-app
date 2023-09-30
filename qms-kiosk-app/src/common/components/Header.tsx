@@ -1,10 +1,13 @@
+import { FC } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
-// @ts-ignore
 import icon from '../../../assets/icon.png';
 
+type Props = {
+  message: string;
+};
 
-const Header = (props) => (
+const Header: FC<Props> = (props: Props) => (
   <View style={styles.container}>
     <Image source={icon} style={styles.icon}/>
     <Text style={styles.message} variant="titleMedium">
