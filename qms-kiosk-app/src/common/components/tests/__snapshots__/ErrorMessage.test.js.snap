@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorMessage component renders as expected with not provided props 1`] = `
+exports[`ErrorMessage component renders with no provided props as expected 1`] = `
 <ForwardRef(Text)
   style={
     {
