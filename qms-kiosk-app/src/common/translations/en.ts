@@ -7,5 +7,6 @@ export default {
     translation: 'Turn details',
     services: 'Services',
     chooseServiceMessage: 'Please, choose a service',
+    defaultErrorMessage: 'We\'re sorry, but it appears there was a problem processing your request. Please try again later or contact our support team for help.',
   },
 };
