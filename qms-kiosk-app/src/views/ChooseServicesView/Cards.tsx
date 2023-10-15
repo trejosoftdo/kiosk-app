@@ -1,7 +1,14 @@
+import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import ServiceCard from './ServiceCard';
 
-type Props = {
+/**
+ * CardsProps defines the props for the Cards Component.
+ *
+ * @property items - services items
+ * @property onServiceSelect - a handler that is called when a service is selected
+ */
+interface CardsProps {
   items: {
     name: string;
     icon: string;
@@ -10,7 +17,12 @@ type Props = {
   onServiceSelect: (name: string) => void;
 };
 
-const Cards = (props: Props) => (
+/**
+ * A component the services cards
+ *
+ * @param {CardsProps} props - The props for the Cards component.
+ */
+const Cards: React.FC<CardsProps> = (props: CardsProps) => (
   <View style={styles.container}>
     {props.items.map(item => (
       <ServiceCard

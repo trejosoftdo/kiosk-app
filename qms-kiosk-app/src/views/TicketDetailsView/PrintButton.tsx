@@ -1,33 +1,30 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import ActionButton from '../../common/components/ActionButton';
 
-type Props = {
+/**
+ * PrintButtonProps defines the props for the Printing Form Component.
+ *
+ * @property onPress - on press handler
+ */
+interface PrintButtonProps {
   onPress: () => void;
-};
+}
 
-
-const PrintButton: FC<Props> = (props: Props) => {
+/**
+ * A component that represents a button for printing ticket details
+ *
+ * @param {PrintButtonProps} props - The props for the Print Button component.
+ */
+const PrintButton: React.FC<PrintButtonProps> = (props: PrintButtonProps) => {
   const { t } = useTranslation();
   return (
-    <Button
-      labelStyle={styles.label}
-      buttonColor='#b4c5e4'
+    <ActionButton
       icon="printer"
-      mode="contained-tonal"
       onPress={props.onPress}
-    >
-      {t('translation:printTicket')}
-    </Button>
+      message={t('translation:printTicket')}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 14,
-    color: '#3c3744',
-  },
-});
 
 export default PrintButton;

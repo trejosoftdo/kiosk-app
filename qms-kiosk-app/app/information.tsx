@@ -1,23 +1,24 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { TicketDetailsView } from '../src/views';
+import { InformationView } from '../src/views';
+
 
 /**
- * TicketDetails Screen Route
+ * Information Screen Route
  */
-const TicketDetails = () => {
+const Information = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>
         <Stack.Screen
           options={{
-            title: t('translation:turnDetails'),
+            title: t('translation:information'),
           }}
         />
-      <TicketDetailsView />
+      <InformationView />
     </React.Fragment>
   );
 };
 
-export default TicketDetails;
+export default Information;

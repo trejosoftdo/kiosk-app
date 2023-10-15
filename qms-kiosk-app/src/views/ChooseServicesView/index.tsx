@@ -1,15 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { router } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import Header from '../../common/components/Header';
-import Cards from './Cards';
 import useServices from '../../hooks/useServices';
-import LoadingIndicator from '../../common/components/LoadingIndicator';
-import ErrorMessage from '../../common/components/ErrorMessage';
+import { AppView, ConditionalContainer } from '../../common/components';
+import { goToPath } from '../../common/helpers';
+import Cards from './Cards';
 
 
-const ChooseServicesView = () => {
+/**
+ * ChooseServicesViewProps defines the props for the Choose Services View Component.
+ */
+interface ChooseServicesViewProps {}
+
+/**
+ * A component that represents the view for choosing services
+ *
+ * @param {ChooseServicesViewProps} props - The props for the Choose Services View component.
+ */
+const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServicesViewProps) => {
   const {
     loading,
     data,
@@ -18,34 +25,21 @@ const ChooseServicesView = () => {
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:chooseServiceMessage';
   return (
-    <View style={styles.container}>
-      <Header message={t(messageKey)} />
-      <LoadingIndicator loading={loading} />
-      {!loading && data && (
+    <AppView
+      headerMessage={t(messageKey)}
+      loading={loading}
+      error={error}
+    >
+      <ConditionalContainer display={!loading && data}>
         <Cards
-          items={data.items}
+          items={data?.items}
           onServiceSelect={(service) => {
-            router.push({
-              pathname: '/ticket-details',
-              params: { service },
-            });
+            goToPath('/ticket-details', { service });
           }}
         />
-      )}
-      {error && <ErrorMessage />}
-      <StatusBar style="auto" />
-    </View>
+      </ConditionalContainer>
+    </AppView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    display: 'flex',
-  },
-});
+};
 
 export default ChooseServicesView;

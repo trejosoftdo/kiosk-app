@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react";
-import { loadServices } from "../common/api";
+import { ServicesData, loadServices } from "../common/api";
+import { Progress, useProgress } from "../common/hooks";
 
-const useServices = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    loadServices().then(data => {
-      setData(data);
-    }).catch((error) => {
-      setError(error);
-    }).finally(() => {
-      setLoading(false);
-    });
-  }, []);
-  
-  return {
-    loading,
-    error,
-    data,
-  };
-};
+/**
+ * Hook to get the available services
+ * @returns Progress<ServicesData>
+ */
+const useServices = (): Progress<ServicesData> => useProgress<ServicesData>(loadServices());
 
 export default useServices;

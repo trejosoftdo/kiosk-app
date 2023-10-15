@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { useTranslation } from 'react-i18next';
-import { router, useLocalSearchParams } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
-import Header from '../../common/components/Header';
-import LoadingIndicator from '../../common/components/LoadingIndicator';
+import { useLocalSearchParams } from 'expo-router';
+import { goToPath } from '../../common/helpers';
+import { AppView, ConditionalContainer, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
-import Ticket from './Ticket';
 import UsersInQueue from './UsersInQueue';
 import PrintButton from './PrintButton';
-import ErrorMessage from '../../common/components/ErrorMessage';
 
+/**
+ * TicketDetailsViewProps defines the props for the Ticket Details View Component.
+ */
+interface TicketDetailsViewProps {}
 
-const TicketDetailsView = () => {
+/**
+ * A component for the Ticket Details view
+ *
+ * @param {TicketDetailsViewProps} props - The props for the Ticket Details View component.
+ */
+const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetailsViewProps) => {
   const params = useLocalSearchParams();
   const {
     loading,
@@ -22,33 +27,27 @@ const TicketDetailsView = () => {
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
-    <View style={styles.container}>
-      <Header message={t(messageKey)} />
-      <LoadingIndicator loading={loading} />
-      {!loading && data && (
+    <AppView
+      headerMessage={t(messageKey)}
+      loading={loading}
+      error={error}
+    >
+      <ConditionalContainer display={!loading && data}>
         <>
-          <Ticket value={data.details.value} />
-          <UsersInQueue total={data.usersInQueue} />
+          <Value
+            value={data?.details.value}
+            icon="ticket-confirmation"
+          />
+          <UsersInQueue total={data?.usersInQueue} />
           <PrintButton
             onPress={() => {
-              router.push('/');
+              goToPath('/');
             }}
           />
         </>
-      )}
-      {error && <ErrorMessage />}
-      <StatusBar style="auto" />
-    </View>
+      </ConditionalContainer>
+    </AppView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  }
-});
 
 export default TicketDetailsView;

@@ -1,15 +1,27 @@
+import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 
-const ErrorMessage = () => {
+
+/**
+ * ConditionalContainerProps defines the props for the Conditional Container Component.
+ */
+interface ErrorMessageProps {}
+
+/**
+ * A component that display a general error message when an unexpected error occurrs
+ *
+ * @param {ErrorMessageProps} props - The props for the Error Message component.
+ */
+const ErrorMessage: React.FC<ErrorMessageProps> = (props: ErrorMessageProps) => {
   const { t } = useTranslation();
   return (
     <Text style={styles.message} variant="titleMedium">
       {t('translation:defaultErrorMessage')}
     </Text>
-);
-}
+  );
+};
 
 const styles = StyleSheet.create({
   message: {

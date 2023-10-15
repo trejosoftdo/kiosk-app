@@ -1,13 +1,23 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import icon from '../../../assets/icon.png';
 
-type Props = {
+/**
+ * HeaderProps defines the props for the Header Component.
+ *
+ * @property message - the message of the header
+ */
+interface HeaderProps {
   message: string;
-};
+}
 
-const Header: FC<Props> = (props: Props) => (
+/**
+ * A component that display a general header for the views in the app
+ *
+ * @param {HeaderProps} props - The props for the Header component.
+ */
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => (
   <View style={styles.container}>
     <Image source={icon} style={styles.icon}/>
     <Text style={styles.message} variant="titleMedium">
@@ -21,6 +31,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
+    maxWidth: 500,
   },
   icon: {
     width: 200 ,
