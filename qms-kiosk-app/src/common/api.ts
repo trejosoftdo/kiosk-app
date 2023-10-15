@@ -1,7 +1,3 @@
-const delay = (timeout): Promise<void> => new Promise((resolve): void => {
-  setTimeout(resolve, timeout);
-});
-
 export type ServicesData = {
   total: number;
   items: {
@@ -11,6 +7,31 @@ export type ServicesData = {
     icon: string;
   }[];
 };
+
+export type TicketDetailsData = {
+  details: {
+    id: string;
+    service: string;
+    value: string;
+  };
+  usersInQueue: number;
+};
+
+export type DeviceConnectionData = {
+  deviceCode: string;
+  userCode: string;
+};
+
+export type DeviceAuthData = {
+  refreshToken: string;
+  accessToken: string;
+  pending?: boolean;
+};
+
+
+const delay = (timeout): Promise<void> => new Promise((resolve): void => {
+  setTimeout(resolve, timeout);
+});
 
 export const loadServices = async (): Promise<ServicesData> => {
   await delay(2000);
@@ -39,15 +60,6 @@ export const loadServices = async (): Promise<ServicesData> => {
   };
 };
 
-export type TicketDetailsData = {
-  details: {
-    id: string;
-    service: string;
-    value: string;
-  };
-  usersInQueue: number;
-};
-
 export const loadTicketDetails = async (service: string): Promise<TicketDetailsData> => {
   await delay(2000);
   const time = new Date().getTime().toString(); 
@@ -61,7 +73,7 @@ export const loadTicketDetails = async (service: string): Promise<TicketDetailsD
   };
 };
 
-export const connectDevice = async () => {
+export const connectDevice = async (): Promise<DeviceConnectionData> => {
   await delay(2000);
   return {
     deviceCode: 'DC-12345',
@@ -69,8 +81,7 @@ export const connectDevice = async () => {
   };
 };
 
-
-export const getTokensForDevice = async (deviceCode) => {
+export const getTokensForDevice = async (deviceCode: string): Promise<DeviceAuthData> => {
   await delay(2000);
   return {
     refreshToken: 'testRefreshToken',
