@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { useInterval } from "../common/hooks";
 import { connectDevice, getTokensForDevice } from "../common/api";
-import useInterval from "./useInterval";
 
 const useConnection = () => {
   const [loading, setLoading] = useState(false);

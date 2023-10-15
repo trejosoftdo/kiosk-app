@@ -1,14 +1,14 @@
 
-import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import useConnection from '../../hooks/useConnection';
+import { goToPath } from '../../common/helpers';
 import {
   ActionButton,
   AppView,
   Value,
 } from '../../common/components';
-import ConnectForm from './ConnectForm';
 import { getMessageKey } from './helpers';
+import ConnectForm from './ConnectForm';
 
 
 const ConnectionView = () => {
@@ -44,9 +44,7 @@ const ConnectionView = () => {
           icon="arrow-left-top"
           message={t('translation:return')}
           onPress={() => {
-            router.push({
-              pathname: '/',
-            });
+            goToPath('/');
           }}
         />
       )}

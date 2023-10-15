@@ -1,26 +1,6 @@
-import { useEffect, useState } from "react";
-import { loadTicketDetails } from "../common/api";
+import { TicketDetailsData, loadTicketDetails } from "../common/api";
+import { Progress, useProgress } from "../common/hooks";
 
-const useTicketDetails = (service) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    loadTicketDetails(service).then(data => {
-      setData(data);
-    }).catch((error) => {
-      setError(error);
-    }).finally(() => {
-      setLoading(false);
-    });
-  }, [service]);
-  
-  return {
-    loading,
-    error,
-    data,
-  };
-};
+const useTicketDetails = (service: string): Progress<TicketDetailsData> => useProgress<TicketDetailsData>(loadTicketDetails(service));
 
 export default useTicketDetails;

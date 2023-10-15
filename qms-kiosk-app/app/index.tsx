@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { router, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { IconButton, MD3Colors } from 'react-native-paper';
+import { goToPath } from '../src/common/helpers';
 import { ChooseServicesView } from '../src/views';
 
 
@@ -18,7 +19,7 @@ import { ChooseServicesView } from '../src/views';
                 iconColor={MD3Colors.primary0}
                 size={20}
                 onPress={() => {
-                  router.push({ pathname: '/configuration' });
+                  goToPath('/configuration');
                 }}
               />          
             ),

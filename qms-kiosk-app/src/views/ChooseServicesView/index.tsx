@@ -1,12 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { router } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import Header from '../../common/components/Header';
-import Cards from './Cards';
 import useServices from '../../hooks/useServices';
-import LoadingIndicator from '../../common/components/LoadingIndicator';
-import ErrorMessage from '../../common/components/ErrorMessage';
+import { AppView } from '../../common/components';
+import { goToPath } from '../../common/helpers';
+import Cards from './Cards';
 
 
 const ChooseServicesView = () => {
@@ -18,34 +14,21 @@ const ChooseServicesView = () => {
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:chooseServiceMessage';
   return (
-    <View style={styles.container}>
-      <Header message={t(messageKey)} />
-      <LoadingIndicator loading={loading} />
+    <AppView
+      headerMessage={t(messageKey)}
+      loading={loading}
+      error={error}
+    >
       {!loading && data && (
         <Cards
           items={data.items}
           onServiceSelect={(service) => {
-            router.push({
-              pathname: '/ticket-details',
-              params: { service },
-            });
+            goToPath('/ticket-details', { service });
           }}
         />
       )}
-      {error && <ErrorMessage />}
-      <StatusBar style="auto" />
-    </View>
+    </AppView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    display: 'flex',
-  },
-});
+};
 
 export default ChooseServicesView;

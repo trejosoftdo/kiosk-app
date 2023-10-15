@@ -1,4 +1,4 @@
-export const getMessageKey = (data) => {
+export const getMessageKey = (data): string => {
   if (data?.tokens) {
     return 'translation:successConnectionMessage';
   }

@@ -1,29 +1,13 @@
 import { useEffect, useState } from "react";
 import { loadServices } from "../common/api";
 import { getDeviceId } from "../common/helpers";
+import { useProgress } from "../common/hooks";
 
 
-const useDeviceId = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
+type DeviceData = {
+  deviceId: string;
+}
 
-  useEffect(() => {
-    setLoading(true);
-    getDeviceId().then((deviceId) => {
-      setData({ deviceId });
-    }).catch((error) => {
-      setError(error);
-    }).finally(() => {
-      setLoading(false);
-    });
-  }, []);
-  
-  return {
-    loading,
-    error,
-    data,
-  };
-};
+const useDeviceId = (): Progress<DeviceData> => useProgress<DeviceData>(getDeviceId(), (deviceId) => ({ deviceId }));
 
 export default useDeviceId;

@@ -2,7 +2,17 @@ const delay = (timeout): Promise<void> => new Promise((resolve): void => {
   setTimeout(resolve, timeout);
 });
 
-export const loadServices = async () => {
+export type ServicesData = {
+  total: number;
+  items: {
+    id: string;
+    name: string;
+    label: string;
+    icon: string;
+  }[];
+};
+
+export const loadServices = async (): Promise<ServicesData> => {
   await delay(2000);
   return {
     total: 3,
@@ -29,7 +39,16 @@ export const loadServices = async () => {
   };
 };
 
-export const loadTicketDetails = async (service) => {
+export type TicketDetailsData = {
+  details: {
+    id: string;
+    service: string;
+    value: string;
+  };
+  usersInQueue: number;
+};
+
+export const loadTicketDetails = async (service: string): Promise<TicketDetailsData> => {
   await delay(2000);
   const time = new Date().getTime().toString(); 
   return {

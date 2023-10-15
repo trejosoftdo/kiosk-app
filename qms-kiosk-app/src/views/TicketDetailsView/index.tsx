@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
+import { goToPath } from '../../common/helpers';
 import { AppView, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
 import UsersInQueue from './UsersInQueue';
@@ -18,7 +19,7 @@ const TicketDetailsView = () => {
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
     <AppView
-      headerMessage={t('translation:information')}
+      headerMessage={t(messageKey)}
       loading={loading}
       error={error}
     >
@@ -31,7 +32,7 @@ const TicketDetailsView = () => {
           <UsersInQueue total={data.usersInQueue} />
           <PrintButton
             onPress={() => {
-              router.push('/');
+              goToPath('/');
             }}
           />
         </>
