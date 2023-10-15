@@ -10,6 +10,11 @@ export type ConnectionResult = Progress<ConnectionData> & {
   connect: (applicationId: string) => void;
 };
 
+/**
+ * Hook used to connect the device
+ * 
+ * @returns ConnectionResult
+ */
 const useConnection = (): ConnectionResult => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

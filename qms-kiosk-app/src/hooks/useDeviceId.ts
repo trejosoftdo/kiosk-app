@@ -8,6 +8,10 @@ type DeviceData = {
   deviceId: string;
 }
 
+/**
+ * Hook to get the device identifier
+ * @returns Progress<DeviceData>
+ */
 const useDeviceId = (): Progress<DeviceData> => useProgress<DeviceData>(getDeviceId(), (deviceId) => ({ deviceId }));
 
 export default useDeviceId;

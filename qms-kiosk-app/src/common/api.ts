@@ -28,11 +28,20 @@ export type DeviceAuthData = {
   pending?: boolean;
 };
 
-
-const delay = (timeout): Promise<void> => new Promise((resolve): void => {
+/**
+ * To simulate a delay
+ * @param  {NoSubstitutionTemplateLiteral} timeout
+ * @returns Promise<void>
+ */
+const delay = (timeout: number): Promise<void> => new Promise((resolve): void => {
   setTimeout(resolve, timeout);
 });
 
+
+/**
+ * Load services data
+ * @returns Promise<ServicesData>
+ */
 export const loadServices = async (): Promise<ServicesData> => {
   await delay(2000);
   return {
@@ -60,6 +69,11 @@ export const loadServices = async (): Promise<ServicesData> => {
   };
 };
 
+/**
+ * Loads ticket details
+ * @param  {string} service
+ * @returns Promise<TicketDetailsData>
+ */
 export const loadTicketDetails = async (service: string): Promise<TicketDetailsData> => {
   await delay(2000);
   const time = new Date().getTime().toString(); 
@@ -73,6 +87,11 @@ export const loadTicketDetails = async (service: string): Promise<TicketDetailsD
   };
 };
 
+
+/**
+ * Connects a device
+ * @returns Promise<DeviceConnectionData>
+ */
 export const connectDevice = async (): Promise<DeviceConnectionData> => {
   await delay(2000);
   return {
@@ -81,6 +100,11 @@ export const connectDevice = async (): Promise<DeviceConnectionData> => {
   };
 };
 
+/**
+ * Gets the tokens for the device
+ * @param  {string} deviceCode
+ * @returns Promise<DeviceAuthData>
+ */
 export const getTokensForDevice = async (deviceCode: string): Promise<DeviceAuthData> => {
   await delay(2000);
   return {

@@ -6,6 +6,13 @@ export type Progress<T> = {
   error: Error | null;
 };
 
+/**
+ * Hook to show the progress of a promise
+ * 
+ * @param  {Promise<T>} promise
+ * @param  {(data:any)=>T=null} mapper
+ * @returns Progress<T>
+ */
 export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = null): Progress<T> => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -33,6 +40,13 @@ export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = n
   };
 };
 
+/**
+ * Hook to execute a call back at a given interval
+ * 
+ * @param  {()=>void} callback
+ * @param  {number} delay
+ * @returns void
+ */
 export const useInterval = (callback: () => void, delay: number): void => {
   const callbackRef = useRef();
 
