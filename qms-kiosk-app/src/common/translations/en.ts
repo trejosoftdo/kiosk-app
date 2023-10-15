@@ -20,5 +20,6 @@ export default {
     connect: 'Connect',
     application: 'Application',
     initialConnetMessage: 'To connect the device to an application, please, complete the form below: ',
+    configMessage: 'This section is your hub for managing crucial app details and connections. Here, you can review and update app information and connection settings. Your preferences are key to ensuring the app functions just the way you want it to.'
   },
 };

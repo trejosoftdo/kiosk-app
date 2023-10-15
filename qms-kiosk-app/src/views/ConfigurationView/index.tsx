@@ -7,7 +7,7 @@ import Options from './Options';
 const ConfigurationView = () => {
   const { t } = useTranslation();
   return (
-    <AppView loading={false} headerMessage={t('translation:configuration')} >
+    <AppView loading={false} headerMessage={t('translation:configMessage')} >
       <Options
         onOptionSelect={(option) => {
           goToPath(`/${option}`);

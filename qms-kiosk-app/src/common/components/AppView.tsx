@@ -16,7 +16,7 @@ type Props = {
 const AppView: React.FC<Props> = (props: Props) => (
   <View style={styles.container}>
     <Header message={props.headerMessage} />
-    <LoadingIndicator loading={props.loading} />
+    {props.loading && <LoadingIndicator loading={props.loading} />}
     {props.children}
     {props.error && <ErrorMessage />}
     <StatusBar style="auto" />

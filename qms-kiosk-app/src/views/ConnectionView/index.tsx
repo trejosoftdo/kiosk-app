@@ -35,7 +35,7 @@ const ConnectionView = () => {
         />
       </ConditionalContainer>
       <ConditionalContainer display={data?.userCode && !data?.tokens}>
-        <Value
+      <Value
           value={data?.userCode}
           icon="lock"
         />
