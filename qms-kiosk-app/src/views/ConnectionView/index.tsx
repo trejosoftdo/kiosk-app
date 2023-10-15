@@ -5,6 +5,7 @@ import { goToPath } from '../../common/helpers';
 import {
   ActionButton,
   AppView,
+  ConditionalContainer,
   Value,
 } from '../../common/components';
 import { getMessageKey } from './helpers';
@@ -26,20 +27,20 @@ const ConnectionView = () => {
       loading={loading}
       error={error}
     >
-      {!data?.userCode && (
+      <ConditionalContainer display={!data?.userCode}>
         <ConnectForm
           onSubmit={(applicationId) => {
             connect(applicationId);
           }}
         />
-      )}
-      {data?.userCode && !data?.tokens && (
+      </ConditionalContainer>
+      <ConditionalContainer display={data?.userCode && !data?.tokens}>
         <Value
           value={data?.userCode}
           icon="lock"
         />
-      )}
-      {data?.tokens && (
+      </ConditionalContainer>
+      <ConditionalContainer display={data?.tokens}>
         <ActionButton
           icon="arrow-left-top"
           message={t('translation:return')}
@@ -47,7 +48,7 @@ const ConnectionView = () => {
             goToPath('/');
           }}
         />
-      )}
+      </ConditionalContainer>
     </AppView>
   );
 };

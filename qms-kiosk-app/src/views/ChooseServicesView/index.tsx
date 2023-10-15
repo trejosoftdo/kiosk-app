@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import useServices from '../../hooks/useServices';
-import { AppView } from '../../common/components';
+import { AppView, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import Cards from './Cards';
 
@@ -19,14 +19,14 @@ const ChooseServicesView = () => {
       loading={loading}
       error={error}
     >
-      {!loading && data && (
+      <ConditionalContainer display={!loading && data}>
         <Cards
-          items={data.items}
+          items={data?.items}
           onServiceSelect={(service) => {
             goToPath('/ticket-details', { service });
           }}
         />
-      )}
+      </ConditionalContainer>
     </AppView>
   );
 };

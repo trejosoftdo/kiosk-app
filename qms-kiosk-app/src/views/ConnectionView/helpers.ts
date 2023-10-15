@@ -3,5 +3,5 @@ export const getMessageKey = (data): string => {
     return 'translation:successConnectionMessage';
   }
 
-  return data?.userCode ? 'translation:toConnectMessage' : 'translation:connection';
+  return data?.userCode ? 'translation:toConnectMessage' : 'translation:initialConnetMessage';
 };

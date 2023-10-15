@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   message: {
     color: '#3c3744',
-    paddingBottom: 32,
+    paddingBottom: 5,
   },
 });
 

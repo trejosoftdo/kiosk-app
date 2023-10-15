@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocalSearchParams } from 'expo-router';
 import { goToPath } from '../../common/helpers';
-import { AppView, Value } from '../../common/components';
+import { AppView, ConditionalContainer, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
 import UsersInQueue from './UsersInQueue';
 import PrintButton from './PrintButton';
@@ -23,20 +23,20 @@ const TicketDetailsView = () => {
       loading={loading}
       error={error}
     >
-      {!loading && data && (
+      <ConditionalContainer display={!loading && data}>
         <>
           <Value
-            value={data.details.value}
+            value={data?.details.value}
             icon="ticket-confirmation"
           />
-          <UsersInQueue total={data.usersInQueue} />
+          <UsersInQueue total={data?.usersInQueue} />
           <PrintButton
             onPress={() => {
               goToPath('/');
             }}
           />
         </>
-      )}
+      </ConditionalContainer>
     </AppView>
   );
 };
