@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
+    maxWidth: 500,
   },
   icon: {
     width: 200 ,
