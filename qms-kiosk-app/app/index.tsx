@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { IconButton, MD3Colors } from 'react-native-paper';
 import { ChooseServicesView } from '../src/views';
 
 
@@ -9,7 +10,19 @@ import { ChooseServicesView } from '../src/views';
   return (
     <React.Fragment>
         <Stack.Screen
-          options={{ title: t('translation:services') }}
+          options={{
+            title: t('translation:services'),
+            headerRight: () => (
+              <IconButton
+                icon="cog"
+                iconColor={MD3Colors.primary0}
+                size={20}
+                onPress={() => {
+                  router.push({ pathname: '/configuration' });
+                }}
+              />          
+            ),
+          }}
         />
       <ChooseServicesView />
     </React.Fragment>

@@ -41,3 +41,20 @@ export const loadTicketDetails = async (service) => {
     usersInQueue: 10,
   };
 };
+
+export const connectDevice = async () => {
+  await delay(2000);
+  return {
+    deviceCode: 'DC-12345',
+    userCode: '123456',
+  };
+};
+
+
+export const getTokensForDevice = async (deviceCode) => {
+  await delay(2000);
+  return {
+    refreshToken: 'testRefreshToken',
+    accessToken: 'testAccessToken',
+  };
+};

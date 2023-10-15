@@ -3,12 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
 
 type Props = {
+  icon: string;
   value: string;
 };
 
-const Ticket: FC<Props> = (props: Props) => (
+const Value: FC<Props> = (props: Props) => (
   <View style={styles.container}>
-    <Avatar.Icon style={styles.icon} icon="ticket-confirmation" /> 
+    <Avatar.Icon style={styles.icon} icon={props.icon} /> 
     <Text style={styles.number} variant="headlineLarge">
       {props.value}
     </Text>
@@ -37,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Ticket;
+export default Value;

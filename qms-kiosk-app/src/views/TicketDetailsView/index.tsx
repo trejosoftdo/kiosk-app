@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { useTranslation } from 'react-i18next';
 import { router, useLocalSearchParams } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
-import Header from '../../common/components/Header';
-import LoadingIndicator from '../../common/components/LoadingIndicator';
+import { AppView, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
-import Ticket from './Ticket';
 import UsersInQueue from './UsersInQueue';
 import PrintButton from './PrintButton';
-import ErrorMessage from '../../common/components/ErrorMessage';
 
 
 const TicketDetailsView = () => {
@@ -22,12 +17,17 @@ const TicketDetailsView = () => {
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
-    <View style={styles.container}>
-      <Header message={t(messageKey)} />
-      <LoadingIndicator loading={loading} />
+    <AppView
+      headerMessage={t('translation:information')}
+      loading={loading}
+      error={error}
+    >
       {!loading && data && (
         <>
-          <Ticket value={data.details.value} />
+          <Value
+            value={data.details.value}
+            icon="ticket-confirmation"
+          />
           <UsersInQueue total={data.usersInQueue} />
           <PrintButton
             onPress={() => {
@@ -36,19 +36,8 @@ const TicketDetailsView = () => {
           />
         </>
       )}
-      {error && <ErrorMessage />}
-      <StatusBar style="auto" />
-    </View>
+    </AppView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  }
-});
 
 export default TicketDetailsView;
