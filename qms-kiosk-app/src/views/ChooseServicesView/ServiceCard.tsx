@@ -1,14 +1,26 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar, Card, Text } from 'react-native-paper';
 
-type Props = {
+/**
+ * ServiceCardProps defines the props for the Cards Component.
+ *
+ * @property icon - card icon
+ * @property title - card title
+ * @property onPress - on press card handler
+ */
+interface ServiceCardProps {
   icon: string;
   title: string
   onPress: () => void;
-};
+}
 
-const ServiceCard: FC<Props> = (props: Props) => (
+/**
+ * A component for a service card
+ *
+ * @param {ServiceCardProps} props - The props for the Service Card component.
+ */
+const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => (
   <Card
     mode="outlined"
     style={styles.container}

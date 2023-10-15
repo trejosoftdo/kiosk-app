@@ -7,8 +7,17 @@ import useTicketDetails from '../../hooks/useTicketDetails';
 import UsersInQueue from './UsersInQueue';
 import PrintButton from './PrintButton';
 
+/**
+ * TicketDetailsViewProps defines the props for the Ticket Details View Component.
+ */
+interface TicketDetailsViewProps {}
 
-const TicketDetailsView = () => {
+/**
+ * A component for the Ticket Details view
+ *
+ * @param {TicketDetailsViewProps} props - The props for the Ticket Details View component.
+ */
+const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetailsViewProps) => {
   const params = useLocalSearchParams();
   const {
     loading,

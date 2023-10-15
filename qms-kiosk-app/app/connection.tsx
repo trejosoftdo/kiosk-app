@@ -3,8 +3,10 @@ import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ConnectionView } from '../src/views';
 
-
- const Connection = () => {
+/**
+ * Connection Screen Route
+ */
+const Connection = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>

@@ -1,15 +1,26 @@
 
+import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import Option from './Option';
 
 
-type Props = {
+/**
+ * OptionsProps defines the props for the Options Component.
+ *
+ * @property onOptionSelect - option selection handler
+ */
+interface OptionsProps {
   onOptionSelect: (name: string) => void;
 };
 
-const Options = (props: Props) => {
+/**
+ * A component a configuration options
+ *
+ * @param {OptionsProps} props - The props for the Options component.
+ */
+const Options: React.FC<OptionsProps> = (props: OptionsProps) => {
   const { t } = useTranslation();
   return (
     <List.Section style={styles.container}>

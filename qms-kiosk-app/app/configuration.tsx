@@ -3,8 +3,10 @@ import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ConfigurationView } from '../src/views';
 
-
- const Configuration = () => {
+/**
+ * Configuration Screen Route
+ */
+const Configuration = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>

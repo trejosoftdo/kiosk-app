@@ -3,6 +3,9 @@ import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { TicketDetailsView } from '../src/views';
 
+/**
+ * TicketDetails Screen Route
+ */
 const TicketDetails = () => {
   const { t } = useTranslation();
   return (

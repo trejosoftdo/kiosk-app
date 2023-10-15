@@ -18,8 +18,8 @@ export type TicketDetailsData = {
 };
 
 export type DeviceConnectionData = {
-  deviceCode: string;
-  userCode: string;
+  deviceCode?: string;
+  userCode?: string;
 };
 
 export type DeviceAuthData = {

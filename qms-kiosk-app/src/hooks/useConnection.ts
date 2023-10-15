@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import { useInterval } from "../common/hooks";
-import { connectDevice, getTokensForDevice } from "../common/api";
+import { Progress, useInterval } from "../common/hooks";
+import { DeviceAuthData, DeviceConnectionData, connectDevice, getTokensForDevice } from "../common/api";
 
-const useConnection = () => {
+export type ConnectionData = DeviceConnectionData & {
+  tokens?: DeviceAuthData;
+};
+
+export type ConnectionResult = Progress<ConnectionData> & {
+  connect: (applicationId: string) => void;
+};
+
+const useConnection = (): ConnectionResult => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState({});
@@ -11,7 +19,6 @@ const useConnection = () => {
       if (data?.deviceCode) {
         getTokensForDevice(data?.deviceCode)
           .then((tokens) => {
-            console.log(tokens);
             setData({
               ...data,
               tokens,
@@ -23,7 +30,7 @@ const useConnection = () => {
 
   }, 3000);
 
-  const connect = (applicationId) => {
+  const connect = (applicationId: string): void => {
     setLoading(true);
     connectDevice(applicationId).then(data => {
       setData(data);

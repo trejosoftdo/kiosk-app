@@ -2,11 +2,22 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
-type Props = {
+/**
+ * LoadingIndicatorProps defines the props for the Loading Indicator Component.
+ *
+ * @property loading - to indicate it is loading
+ */
+interface LoadingIndicatorProps {
   loading?: boolean;
-};
+}
 
-const LoadingIndicator: React.FC<Props> = (props: Props) => (
+
+/**
+ * A component that indicates the app is busy
+ *
+ * @param {LoadingIndicatorProps} props - The props for the Loading Indicator component.
+ */
+const LoadingIndicator: React.FC<LoadingIndicatorProps> = (props: LoadingIndicatorProps) => (
   <ActivityIndicator
     style={styles.container}
     animating={props.loading}

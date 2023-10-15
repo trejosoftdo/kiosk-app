@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import useServices from '../../hooks/useServices';
 import { AppView, ConditionalContainer } from '../../common/components';
@@ -5,7 +6,17 @@ import { goToPath } from '../../common/helpers';
 import Cards from './Cards';
 
 
-const ChooseServicesView = () => {
+/**
+ * ChooseServicesViewProps defines the props for the Choose Services View Component.
+ */
+interface ChooseServicesViewProps {}
+
+/**
+ * A component that represents the view for choosing services
+ *
+ * @param {ChooseServicesViewProps} props - The props for the Choose Services View component.
+ */
+const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServicesViewProps) => {
   const {
     loading,
     data,

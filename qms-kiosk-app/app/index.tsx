@@ -5,8 +5,10 @@ import { IconButton, MD3Colors } from 'react-native-paper';
 import { goToPath } from '../src/common/helpers';
 import { ChooseServicesView } from '../src/views';
 
-
- const Home = () => {
+/**
+ * Home Screen Route
+ */
+const Home = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>

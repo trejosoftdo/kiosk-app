@@ -1,4 +1,5 @@
 
+import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import useConnection from '../../hooks/useConnection';
 import { goToPath } from '../../common/helpers';
@@ -12,7 +13,17 @@ import { getMessageKey } from './helpers';
 import ConnectForm from './ConnectForm';
 
 
-const ConnectionView = () => {
+/**
+ * ConnectionViewProps defines the props for the Connect Virw Component.
+ */
+interface ConnectionViewProps {}
+
+/**
+ * A component for the connect view
+ *
+ * @param {ConnectionViewProps} props - The props for the Connect View component.
+ */
+const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProps) => {
   const { t } = useTranslation();
   const {
     data,

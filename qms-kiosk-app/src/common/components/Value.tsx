@@ -2,12 +2,24 @@ import { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
 
-type Props = {
+/**
+ * ValueProps defines the props for the Value Component.
+ *
+ * @property icon - icon to display
+ * @property value - value to display
+ */
+interface ValueProps {
   icon: string;
   value: string;
-};
+}
 
-const Value: FC<Props> = (props: Props) => (
+
+/**
+ * A component that represents a value with icon
+ *
+ * @param {ValueProps} props - The props for the Value component.
+ */
+const Value: FC<ValueProps> = (props: ValueProps) => (
   <View style={styles.container}>
     <Avatar.Icon style={styles.icon} icon={props.icon} /> 
     <Text style={styles.number} variant="headlineLarge">

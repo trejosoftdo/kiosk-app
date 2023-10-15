@@ -1,13 +1,25 @@
-
+import * as React from 'react';
 import { List } from 'react-native-paper';
 
-type Props = {
+/**
+ * OptionProps defines the props for the Option Component.
+ *
+ * @property title - option title
+ * @property icon - option icon
+ * @property onPress - option on press handler
+ */
+interface OptionProps {
   title: string;
   icon: string;
   onPress: () => void;
-};
+}
 
-const Option = (props: Props) => (
+/**
+ * A component a configuration option
+ *
+ * @param {OptionProps} props - The props for the Option component.
+ */
+const Option: React.FC<OptionProps> = (props: OptionProps) => (
   <List.Item
     title={props.title}
     left={() => <List.Icon icon={props.icon} />}

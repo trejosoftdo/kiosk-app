@@ -2,12 +2,23 @@ import * as React from 'react';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 
-type Props = {
+/**
+ * ConditionalContainerProps defines the props for the Conditional Container Component.
+ *
+ * @property display - to indicate if the passed children are being displayed
+ * @property children - the contained children
+ */
+interface ConditionalContainerProps {
   display?: boolean;
   children: React.ReactNode;
-};
+}
 
-const ConditionalContainer: React.FC<Props> = (props: Props) => {
+/**
+ * A component that conditionally render a given set of children
+ *
+ * @param {ConditionalContainerProps} props - The props for the Conditional Container component.
+ */
+const ConditionalContainer: React.FC<ConditionalContainerProps> = (props: ConditionalContainerProps) => {
   if (!props.display) {
     return null;
   }

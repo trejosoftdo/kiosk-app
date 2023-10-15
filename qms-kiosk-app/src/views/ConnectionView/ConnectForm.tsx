@@ -1,17 +1,27 @@
-import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { Card, TextInput } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import ActionButton from '../../common/components/ActionButton';
 
 
-type Props = {
+/**
+ * ConnectFormProps defines the props for the Connect Form Component.
+ *
+ * @property onSubmit - form on submit handler
+ */
+interface ConnectFormProps {
   onSubmit: (applicationId: string) => void;
-};
+}
 
-const ConnectForm = (props: Props) => {
+/**
+ * A component a connect form
+ *
+ * @param {ConnectFormProps} props - The props for the Connect Form component.
+ */
+const ConnectForm: React.FC<ConnectFormProps> = (props: ConnectFormProps) => {
   const { t } = useTranslation();
-  const [applicationId, setApplicationId] = useState('');
+  const [applicationId, setApplicationId] = React.useState('');
   return (
     <Card style={styles.container}>
       <Card.Content>
