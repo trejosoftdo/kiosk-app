@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { Avatar, Card, Text } from 'react-native-paper';
+import { Avatar, Card, MD3Colors, Text } from 'react-native-paper';
 
 /**
  * ServiceCardProps defines the props for the Cards Component.
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc'
   },
   icon: {
-    backgroundColor: '#b4c5e4',
+    backgroundColor: MD3Colors.primaryContainer,
   },
   content: {
     display: 'flex',

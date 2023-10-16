@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
+import AppLightTheme from '../theme';
+
 
 /**
  * LoadingIndicatorProps defines the props for the Loading Indicator Component.
@@ -22,7 +24,7 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = (props: LoadingIndicat
     style={styles.container}
     animating={props.loading}
     size="large"
-    color="#233dff"
+    color={AppLightTheme.colors.primary}
   />
 );
 

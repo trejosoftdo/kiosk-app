@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, MD3Colors } from 'react-native-paper';
 
 /**
  * ActionButtonProps defines the props for the Action Button Component.
@@ -26,8 +26,7 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
   return (
     <Button
       labelStyle={styles.label}
-      buttonColor='#b4c5e4'
-      mode="contained-tonal"
+      mode="contained"
       onPress={props.onPress}
       icon={props.icon}
     >
@@ -38,8 +37,8 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 14,
-    color: '#3c3744',
+    fontSize: 16,
+    // color: '#3c3744',
   },
 });
 
