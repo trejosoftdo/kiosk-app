@@ -28,7 +28,6 @@ const UsersInQueue: React.FC<UsersInQueueProps> = (props: UsersInQueueProps) => 
 
 const styles = StyleSheet.create({
   container: {
-    color: '#3c3744',
     paddingBottom: 32,
   },
 });

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { IconButton, MD3Colors } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 import { goToPath } from '../src/common/helpers';
 import { ChooseServicesView } from '../src/views';
+import AppLightTheme from '../src/common/theme';
 
 /**
  * Home Screen Route
@@ -18,7 +19,7 @@ const Home = () => {
             headerRight: () => (
               <IconButton
                 icon="cog"
-                iconColor={MD3Colors.primary0}
+                iconColor={AppLightTheme.colors.primary}
                 size={20}
                 onPress={() => {
                   goToPath('/configuration');

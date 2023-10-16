@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
+import AppLightTheme from '../theme';
 
 
 /**
@@ -25,12 +26,12 @@ const ErrorMessage: React.FC<ErrorMessageProps> = (props: ErrorMessageProps) => 
 
 const styles = StyleSheet.create({
   message: {
-    color: '#cc426a',
+    color: AppLightTheme.colors.error,
     padding: 16,
     paddingBottom: 32,
     borderWidth: 1,
-    borderColor: '#d6a2b1',
-    backgroundColor: '#feeef4',
+    borderColor: AppLightTheme.colors.error,
+    backgroundColor: AppLightTheme.colors.tertiaryContainer,
     margin: 8,
     borderRadius: 5,
   },

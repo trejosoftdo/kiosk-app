@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { ActivityIndicator, MD2Colors } from 'react-native-paper';
-
 
 /**
  * ConditionalContainerProps defines the props for the Conditional Container Component.

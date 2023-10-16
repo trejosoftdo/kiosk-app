@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar, Card, Text } from 'react-native-paper';
+import AppLightTheme from '../../common/theme';
 
 /**
  * ServiceCardProps defines the props for the Cards Component.
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc'
   },
   icon: {
-    backgroundColor: '#b4c5e4',
+    backgroundColor: AppLightTheme.colors.primary,
   },
   content: {
     display: 'flex',

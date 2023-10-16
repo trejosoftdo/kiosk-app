@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
+import AppLightTheme from '../theme';
 
 /**
  * ValueProps defines the props for the Value Component.
@@ -35,16 +36,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: AppLightTheme.colors.outline,
     padding: 16,
     borderRadius: 8,
     marginBottom: 32,
+    width: '80%',
+    maxWidth: 280,
   },
   icon: {
-    backgroundColor: '#3c3744',
+    backgroundColor: AppLightTheme.colors.primary,
   },
   number: {
-    color: '#00bf63',
+    color: AppLightTheme.colors.secondary,
     fontWeight: '600',
     paddingTop: 12,
   },

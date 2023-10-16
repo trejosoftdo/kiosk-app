@@ -26,8 +26,7 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
   return (
     <Button
       labelStyle={styles.label}
-      buttonColor='#b4c5e4'
-      mode="contained-tonal"
+      mode="contained"
       onPress={props.onPress}
       icon={props.icon}
     >
@@ -38,8 +37,7 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 14,
-    color: '#3c3744',
+    fontSize: 16,
   },
 });
 

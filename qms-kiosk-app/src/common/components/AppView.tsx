@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
+import AppLightTheme from '../theme';
 import Header from './Header';
 import LoadingIndicator from './LoadingIndicator';
 import ErrorMessage from './ErrorMessage';
@@ -39,7 +40,7 @@ const AppView: React.FC<AppViewProps> = (props: AppViewProps) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: AppLightTheme.colors.background,
     alignItems: 'center',
     justifyContent: 'flex-start',
     display: 'flex',
