@@ -19,7 +19,7 @@ const Home = () => {
             headerRight: () => (
               <IconButton
                 icon="cog"
-                iconColor={AppLightTheme.colors.background}
+                iconColor={AppLightTheme.colors.primary}
                 size={20}
                 onPress={() => {
                   goToPath('/configuration');
