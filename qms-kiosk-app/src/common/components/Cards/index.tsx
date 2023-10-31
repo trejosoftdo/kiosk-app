@@ -1,36 +1,40 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import ServiceCard from './ServiceCard';
+import ItemCard from './ItemCard';
+
+
+type Item = {
+  id: string;
+  name: string;
+  icon: string;
+  label: string;
+};
 
 /**
  * CardsProps defines the props for the Cards Component.
  *
- * @property items - services items
- * @property onServiceSelect - a handler that is called when a service is selected
+ * @property items - list of items
+ * @property onItemSelect - a handler that is called when an item is selected
  */
 interface CardsProps {
-  items: {
-    name: string;
-    icon: string;
-    label: string;
-  }[];
-  onServiceSelect: (name: string) => void;
+  items: Item[];
+  onItemSelect: (item: Item) => void;
 };
 
 /**
- * A component the services cards
+ * A component that represents a list of cards
  *
  * @param {CardsProps} props - The props for the Cards component.
  */
 const Cards: React.FC<CardsProps> = (props: CardsProps) => (
   <View style={styles.container}>
     {props.items.map(item => (
-      <ServiceCard
+      <ItemCard
         key={item.name}  
         icon={item.icon}
         title={item.label}
         onPress={() => {
-          props.onServiceSelect(item.name);
+          props.onItemSelect(item);
         }}
       />
     ))}

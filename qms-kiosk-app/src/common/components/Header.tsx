@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import icon from '../../../assets/icon.png';
+import AppLightTheme from '../theme';
 
 /**
  * HeaderProps defines the props for the Header Component.
@@ -28,7 +29,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => (
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: AppLightTheme.colors.background,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -39,8 +40,9 @@ const styles = StyleSheet.create({
     height: 200,
   },
   message: {
-    color: '#3c3744',
+    color: AppLightTheme.colors.secondary,
     paddingBottom: 32,
+    textAlign: 'justify'
   },
 });
 

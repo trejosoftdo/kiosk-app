@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import useDeviceId from '../../hooks/useDeviceId';
@@ -28,8 +28,12 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
       <ConditionalContainer display={data?.deviceId}>
         <List.Accordion
           style={styles.container}
-          title={t('translation:details')}
-          left={props => <List.Icon {...props} icon="information" />}
+          left={props => (
+            <View style={styles.title}>
+              <List.Icon {...props} icon="information" />
+              <Text style={styles.titleText}>{t('translation:details')}</Text>
+            </View>
+          )}
         >
           <List.Item
             title={t('translation:id')}
@@ -42,6 +46,16 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
 };
 
 const styles = StyleSheet.create({
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '50%',
+  },
+  titleText: {
+    paddingLeft: 10,
+    fontSize: 16
+  },
   container: {
     width: '100%',
     maxWidth: 500,

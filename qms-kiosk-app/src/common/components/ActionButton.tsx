@@ -25,6 +25,7 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
   const { t } = useTranslation();
   return (
     <Button
+      style={styles.container}
       labelStyle={styles.label}
       mode="contained"
       onPress={props.onPress}
@@ -36,8 +37,12 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: '8px',
+  },
   label: {
     fontSize: 16,
+    lineHeight: 24
   },
 });
 
