@@ -27,7 +27,13 @@ const AppHeader: React.FC<AppHeaderProps> = (props: AppHeaderProps) => (
       title: props.title,
       headerStyle: {
         backgroundColor: AppLightTheme.colors.primary,
-      },        
+      },
+      headerTitleStyle: {
+        fontFamily: AppLightTheme.fonts.headlineLarge.fontFamily,
+      },
+      headerBackTitleStyle: {
+        fontFamily: AppLightTheme.fonts.headlineLarge.fontFamily,
+      },
       headerTintColor: AppLightTheme.colors.background,
       headerRight: props.headerRight,
     }}

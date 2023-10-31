@@ -42,7 +42,7 @@ const delay = (timeout: number): Promise<void> => new Promise((resolve): void =>
  * Load services data
  * @returns Promise<ServicesData>
  */
-export const loadServices = async (): Promise<ServicesData> => {
+export const loadServices = async (categoryId: number): Promise<ServicesData> => {
   await delay(2000);
   return {
     total: 3,
@@ -52,17 +52,51 @@ export const loadServices = async (): Promise<ServicesData> => {
         name: 'results',
         label: 'Resultados',
         icon: 'file-multiple',
+        categoryId,
       },
       {
         id: 'analysis-id',
         name: 'analysis',
         label: 'Analisis',
         icon: 'poll',
+        categoryId,
       },
       {
         id: 'information-id',
         name: 'information',
         label: 'Informacion',
+        icon: 'information',
+        categoryId,
+      }
+    ],
+  };
+};
+
+/**
+ * Load categories data
+ * @returns Promise<CategoriesData>
+ */
+export const loadCategories = async (): Promise<CategoriesData> => {
+  await delay(2000);
+  return {
+    total: 3,
+    items: [
+      {
+        id: 'category-1',
+        name: 'results',
+        label: 'Categoria I',
+        icon: 'file-multiple',
+      },
+      {
+        id: 'category-2',
+        name: 'analysis',
+        label: 'Categoria II',
+        icon: 'poll',
+      },
+      {
+        id: 'category-3',
+        name: 'information',
+        label: 'Categoria III',
         icon: 'information',
       }
     ],

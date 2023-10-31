@@ -10,9 +10,7 @@ const TicketDetails = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>
-        <AppHeader
-          title={t('translation:turnDetails')}
-        />
+        <AppHeader title={t('translation:turnDetails')} />
       <TicketDetailsView />
     </React.Fragment>
   );

@@ -23,12 +23,12 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
     loading,
     data,
     error,
-  } = useTicketDetails(params.service);
+  } = useTicketDetails(params.serviceId);
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
     <AppView
-      headerMessage={t(messageKey)}
+      headerMessage={t(messageKey, { service: params.serviceLabel })}
       loading={loading}
       error={error}
     >
@@ -36,7 +36,7 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
         <>
           <Value
             value={data?.details.value}
-            icon="ticket-confirmation"
+            icon="cards-outline"
           />
           <UsersInQueue total={data?.usersInQueue} />
           <PrintButton

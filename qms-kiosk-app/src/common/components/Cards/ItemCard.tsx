@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar, Card, Text } from 'react-native-paper';
-import AppLightTheme from '../../common/theme';
+import AppLightTheme from '../../theme';
 
 /**
- * ServiceCardProps defines the props for the Cards Component.
+ * ItemCardProps defines the props for the Cards Component.
  *
  * @property icon - card icon
  * @property title - card title
  * @property onPress - on press card handler
  */
-interface ServiceCardProps {
+interface ItemCardProps {
   icon: string;
   title: string
   onPress: () => void;
 }
 
 /**
- * A component for a service card
+ * A component for an item card
  *
- * @param {ServiceCardProps} props - The props for the Service Card component.
+ * @param {ItemCardProps} props - The props for the Item Card component.
  */
-const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => (
+const ItemCard: React.FC<ItemCardProps> = (props: ItemCardProps) => (
   <Card
     mode="outlined"
     style={styles.container}
@@ -36,13 +36,13 @@ const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => (
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: AppLightTheme.colors.background,
     marginRight: 2,
     cursor: 'pointer',
-    width: '100%',
-    maxWidth: 320,
+    width: '45%',
+    maxWidth: 150,
     paddingBottom: 16,
-    borderColor: '#ccc'
+    borderColor: AppLightTheme.colors.outline
   },
   icon: {
     backgroundColor: AppLightTheme.colors.primary,
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    color: '#3c3744',
+    color: AppLightTheme.colors.secondary,
     paddingTop: 10,
   },
 });
 
-export default ServiceCard;
+export default ItemCard;
