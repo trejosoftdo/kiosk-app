@@ -35,6 +35,11 @@ const Options: React.FC<OptionsProps> = (props: OptionsProps) => {
         icon="connection"
         onPress={() => props.onOptionSelect('connection')}
       />
+      <Option
+        title={t('translation:language')}
+        icon="translate"
+        onPress={() => props.onOptionSelect('language')}
+      />
     </List.Section>
   );
 };

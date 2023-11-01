@@ -27,5 +27,9 @@ export default {
     customerDataFormMessage: 'Bienvenido! Para poder brindarte un servicio más personal requerimos tu nombre:',
     name: 'Nombre',
     continue: 'Continuar',
+    language: 'Idioma',
+    languageMessage: 'Selecciona el idioma de tu preferencia:',
+    spanish: 'Español',
+    english: 'Inglés'
   },
 };
