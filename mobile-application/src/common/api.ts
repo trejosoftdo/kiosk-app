@@ -67,6 +67,13 @@ export const loadServices = async (categoryId: number): Promise<ServicesData> =>
         label: 'Informacion',
         icon: 'information',
         categoryId,
+      },
+      {
+        id: 'general-id',
+        name: 'general',
+        label: 'General',
+        icon: 'web',
+        categoryId,
       }
     ],
   };
@@ -98,6 +105,12 @@ export const loadCategories = async (): Promise<CategoriesData> => {
         name: 'information',
         label: 'Categoria III',
         icon: 'information',
+      },
+      {
+        id: 'category-4',
+        name: 'cat4',
+        label: 'Categoria IV',
+        icon: 'web',
       }
     ],
   };
