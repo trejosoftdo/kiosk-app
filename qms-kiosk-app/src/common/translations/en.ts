@@ -4,7 +4,7 @@ export default {
     welcomeTurn: 'Welcome {{customer}}, your turn number for the service "{{service}}" is:',
     printTicket: 'Print ticket',
     usersInQueue: 'There are a total of {{total}} users in Queue.',
-    translation: 'Turn details',
+    turnDetails: 'Turn details',
     services: 'Services',
     categories: 'Categories',
     configuration: 'Configuration',
@@ -26,6 +26,10 @@ export default {
     customerData: 'Customer Data',
     customerDataFormMessage: 'Welcome! We require your name to be able to give you a more personal assistance:',
     name: 'Name',
-    continue: 'Continue'
+    continue: 'Continue',
+    language: 'Language',
+    languageMessage: 'Select the language of your preference:',
+    spanish: 'Spanish',
+    english: 'English'
   },
 };
