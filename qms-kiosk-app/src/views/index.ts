@@ -4,3 +4,4 @@ export { default as TicketDetailsView } from './TicketDetailsView';
 export { default as ConfigurationView } from './ConfigurationView';
 export { default as InformationView } from './InformationView';
 export { default as ConnectionView } from './ConnectionView';
+export { default as CustomerDataFormView } from './CustomerDataFormView';

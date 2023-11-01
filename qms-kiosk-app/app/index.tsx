@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { IconButton } from 'react-native-paper';
 import { goToPath } from '../src/common/helpers';
-import { ChooseCategoriesView } from '../src/views';
+import { CustomerDataFormView } from '../src/views';
 import AppLightTheme from '../src/common/theme';
 import AppHeader from '../src/common/components/AppHeader';
 
@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <React.Fragment>
         <AppHeader
-          title={t('translation:categories')}
+          title={t('translation:customerData')}
           headerRight={() => (
             <IconButton
               icon="cog"
@@ -26,7 +26,7 @@ const Home = () => {
             />          
           )}
         />
-      <ChooseCategoriesView />
+      <CustomerDataFormView />
     </React.Fragment>
   );
 };

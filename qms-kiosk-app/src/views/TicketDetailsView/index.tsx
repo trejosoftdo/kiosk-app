@@ -28,7 +28,7 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
     <AppView
-      headerMessage={t(messageKey, { service: params.serviceLabel })}
+      headerMessage={t(messageKey, { service: params.serviceLabel, customer: params.customerName })}
       loading={loading}
       error={error}
     >
