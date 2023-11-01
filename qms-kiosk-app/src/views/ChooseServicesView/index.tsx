@@ -35,7 +35,14 @@ const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServ
         <Cards
           items={data?.items}
           onItemSelect={(item) => {
-            goToPath('/ticket-details', { serviceId: item.id, serviceLabel: item.label });
+            goToPath(
+              '/ticket-details',
+              {
+                serviceId: item.id,
+                serviceLabel: item.label,
+                customerName: params.customerName,
+              },
+            );
           }}
         />
       </ConditionalContainer>

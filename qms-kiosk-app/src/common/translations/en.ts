@@ -1,7 +1,7 @@
 export default {
   translation: {
     waitMessage: 'Please, wait ...',
-    welcomeTurn: 'Welcome, your turn number for the service "{{service}}" is:',
+    welcomeTurn: 'Welcome {{customer}}, your turn number for the service "{{service}}" is:',
     printTicket: 'Print ticket',
     usersInQueue: 'There are a total of {{total}} users in Queue.',
     translation: 'Turn details',
@@ -22,6 +22,10 @@ export default {
     connect: 'Connect',
     application: 'Application',
     initialConnetMessage: 'To connect the device to an application, please, complete the form below: ',
-    configMessage: 'This section is your hub for managing crucial app details and connections. Here, you can review and update app information and connection settings. Your preferences are key to ensuring the app functions just the way you want it to.'
+    configMessage: 'This section is your hub for managing crucial app details and connections. Here, you can review and update app information and connection settings. Your preferences are key to ensuring the app functions just the way you want it to.',
+    customerData: 'Customer Data',
+    customerDataFormMessage: 'Welcome! We require your name to be able to give you a more personal assistance:',
+    name: 'Name',
+    continue: 'Continue'
   },
 };

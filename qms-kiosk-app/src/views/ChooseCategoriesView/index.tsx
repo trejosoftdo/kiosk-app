@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocalSearchParams } from 'expo-router';
 import { AppView, Cards, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import useCategories from '../../hooks/useCategories';
+
 
 
 /**
@@ -16,6 +18,7 @@ interface ChooseCategoriesViewProps {}
  * @param {ChooseCategoriesViewProps} props - The props for the Choose Categories View component.
  */
 const ChooseCategoriesView: React.FC<ChooseCategoriesViewProps> = (props: ChooseCategoriesViewProps) => {
+  const params = useLocalSearchParams();
   const {
     loading,
     data,
@@ -33,7 +36,13 @@ const ChooseCategoriesView: React.FC<ChooseCategoriesViewProps> = (props: Choose
         <Cards
           items={data?.items}
           onItemSelect={(item) => {
-            goToPath('/services', { categoryId: item.id, categoryLabel: item.label });
+            goToPath(
+              '/services',
+              {
+                customerName: params.customerName,
+                categoryId: item.id,
+                categoryLabel: item.label,
+              });
           }}
         />
       </ConditionalContainer>

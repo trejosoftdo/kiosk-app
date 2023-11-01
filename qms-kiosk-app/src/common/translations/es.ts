@@ -1,7 +1,7 @@
 export default {
   translation: {
     waitMessage: 'Por favor, espere ...',
-    welcomeTurn: 'Bienvenido, tu número de turno para el servicio "{{service}}" es:',
+    welcomeTurn: 'Bienvenido {{customer}}, tu número de turno para el servicio "{{service}}" es:',
     printTicket: 'Imprimir ticket',
     usersInQueue: 'Hay un total de {{total}} usuarios en espera.',
     turnDetails: 'Detalles de turno',
@@ -22,6 +22,10 @@ export default {
     connect: 'Conectar',
     application: 'Aplicación',
     initialConnetMessage: 'Para conectar el equipo a una aplicacion, por favor, completar el formulario debajo: ',
-    configMessage: 'Esta sección es tu centro de control para gestionar detalles importantes de la aplicación y conexiones. Aquí, puedes revisar y actualizar la información de la aplicación y la configuración de las conexiones. Tus preferencias son clave para asegurar que la aplicación funcione exactamente como deseas.'
+    configMessage: 'Esta sección es tu centro de control para gestionar detalles importantes de la aplicación y conexiones. Aquí, puedes revisar y actualizar la información de la aplicación y la configuración de las conexiones. Tus preferencias son clave para asegurar que la aplicación funcione exactamente como deseas.',
+    customerData: 'Datos del cliente',
+    customerDataFormMessage: 'Bienvenido! Para poder brindarte un servicio más personal requerimos tu nombre:',
+    name: 'Nombre',
+    continue: 'Continuar',
   },
 };
