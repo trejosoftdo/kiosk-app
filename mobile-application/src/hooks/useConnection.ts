@@ -16,13 +16,14 @@ export type ConnectionResult = Progress<ConnectionData> & {
  * @returns ConnectionResult
  */
 const useConnection = (): ConnectionResult => {
+  const [applicationId, setApplicationId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState({});
 
   useInterval(() => {
-      if (data?.deviceCode) {
-        getTokensForDevice(data?.deviceCode)
+      if (data?.deviceCode && applicationId && !data?.tokens.accessToken) {
+        getTokensForDevice(applicationId, data?.deviceCode)
           .then((tokens) => {
             setData({
               ...data,
@@ -32,12 +33,13 @@ const useConnection = (): ConnectionResult => {
             setError(error);
           })
       }
+      // TODO: Add expiration logic
+  }, 10000);
 
-  }, 3000);
-
-  const connect = (applicationId: string): void => {
+  const connect = (appId: string): void => {
     setLoading(true);
-    connectDevice(applicationId).then(data => {
+    setApplicationId(appId);
+    connectDevice(appId).then(data => {
       setData(data);
     }).catch((error) => {
       setError(error);
