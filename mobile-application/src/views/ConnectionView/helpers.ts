@@ -7,7 +7,7 @@ import { ConnectionData } from "../../hooks/useConnection";
  * @returns string
  */
 export const getMessageKey = (data: ConnectionData): string => {
-  if (data?.tokens) {
+  if (data?.tokens?.accessToken) {
     return 'translation:successConnectionMessage';
   }
 

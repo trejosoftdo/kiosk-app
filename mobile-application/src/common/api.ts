@@ -1,3 +1,6 @@
+import * as api from '../generated/api';
+
+// TODO: Move to a models file
 export type ServicesData = {
   total: number;
   items: {
@@ -20,13 +23,25 @@ export type TicketDetailsData = {
 export type DeviceConnectionData = {
   deviceCode?: string;
   userCode?: string;
+  interval?: number;
+  expiresIn?: number;
+  verificationURI?: string;
 };
 
 export type DeviceAuthData = {
-  refreshToken: string;
-  accessToken: string;
+  refreshToken?: string;
+  accessToken?: string;
+  refreshExpiresIn?: number;
+  expiresIn?: number;
   pending?: boolean;
 };
+
+const AUTHORIZATION_PENDING_CODE = 'authorization_pending';
+
+// TODO: Read from env vars/config
+const getAPIInstance = () => new api.AuthApi(new api.Configuration({
+  basePath: 'http://localhost:5000',
+}));
 
 /**
  * To simulate a delay
@@ -137,25 +152,49 @@ export const loadTicketDetails = async (service: string): Promise<TicketDetailsD
 
 /**
  * Connects a device
+ * @param  {string} realm 
  * @returns Promise<DeviceConnectionData>
  */
-export const connectDevice = async (): Promise<DeviceConnectionData> => {
-  await delay(2000);
+export const connectDevice = async (realm: string): Promise<DeviceConnectionData> => {
+  const apiInstance = getAPIInstance();
+  const response = await apiInstance.authorizeDeviceAuthRealmDeviceGet(realm);
   return {
-    deviceCode: 'DC-12345',
-    userCode: '123456',
+    deviceCode: response.data.deviceCode,
+    userCode: response.data.userCode,
+    interval: response.data.interval,
+    expiresIn: response.data.expiresIn,
+    verificationURI: response.data.verificationURI,
   };
 };
 
 /**
  * Gets the tokens for the device
- * @param  {string} deviceCode
+* @param  {string} realm 
+* @param  {string} deviceCode
  * @returns Promise<DeviceAuthData>
  */
-export const getTokensForDevice = async (deviceCode: string): Promise<DeviceAuthData> => {
-  await delay(2000);
-  return {
-    refreshToken: 'testRefreshToken',
-    accessToken: 'testAccessToken',
-  };
+export const getTokensForDevice = async (realm: string, deviceCode: string): Promise<DeviceAuthData> => {
+  try {
+    const apiInstance = getAPIInstance();
+    const response = await apiInstance.getAuthTokensAuthRealmTokensPost({
+      deviceCode,
+    }, realm);
+
+    return {
+      refreshToken: response.data.refreshToken,
+      accessToken: response.data.accessToken,
+      refreshExpiresIn: response.data.refreshExpiresIn,
+      expiresIn: response.data.expiresIn,
+    };
+  } catch(error) {
+    if (error?.status === 400) {
+      const data = await error.json();
+      if (data?.detail?.code === AUTHORIZATION_PENDING_CODE) {
+        return {
+          pending: true,
+        };
+      }
+    }
+    throw error;
+  }
 };

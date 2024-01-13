@@ -11,6 +11,7 @@ import {
 } from '../../common/components';
 import { getMessageKey } from './helpers';
 import ConnectForm from './ConnectForm';
+import VerificationQRCode from './VerificationQRCode';
 
 
 /**
@@ -45,13 +46,14 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
           }}
         />
       </ConditionalContainer>
-      <ConditionalContainer display={data?.userCode && !data?.tokens}>
-      <Value
+      <ConditionalContainer display={data?.userCode && data?.verificationURI && !data?.tokens?.accessToken}>
+        <VerificationQRCode verificationURI={data?.verificationURI} />
+        <Value
           value={data?.userCode}
           icon="lock"
         />
       </ConditionalContainer>
-      <ConditionalContainer display={data?.tokens}>
+      <ConditionalContainer display={data?.tokens?.accessToken}>
         <ActionButton
           icon="arrow-left-top"
           message={t('translation:return')}
