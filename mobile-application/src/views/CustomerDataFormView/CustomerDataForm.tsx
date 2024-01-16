@@ -40,6 +40,7 @@ const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFo
           icon="page-next"
           message={t('translation:continue')}
           onPress={() => {
+            setName('');
             props.onSubmit(name);
           }}
         />

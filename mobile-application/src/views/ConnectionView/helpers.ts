@@ -1,3 +1,4 @@
+import { ConnectionDetails } from "../../common/helpers";
 import { ConnectionData } from "../../hooks/useConnection";
 
 /**
@@ -6,7 +7,11 @@ import { ConnectionData } from "../../hooks/useConnection";
  * @param  {ConnectionData} data
  * @returns string
  */
-export const getMessageKey = (data: ConnectionData): string => {
+export const getMessageKey = (data: ConnectionData, connectionDetails?: ConnectionDetails): string => {
+  if (connectionDetails.accessToken) {
+    return 'translation:alreadyConnectedMessage';
+  }
+
   if (data?.tokens?.accessToken) {
     return 'translation:successConnectionMessage';
   }

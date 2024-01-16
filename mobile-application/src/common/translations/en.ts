@@ -16,6 +16,8 @@ export default {
     defaultErrorMessage: 'We\'re sorry, but it appears there was a problem processing your request. Please try again later or contact our support team for help.',
     toConnectMessage: 'To complete the connection process, use the next code:',
     successConnectionMessage: 'Device connected successfully',
+    alreadyConnectedMessage: 'Device already connected. If you want to reconnect click the button below.',
+    reconnect: 'Reconnect',
     details: 'Details',
     id: 'Id',
     return: 'Return',

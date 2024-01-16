@@ -6,6 +6,10 @@ export type Progress<T> = {
   error: Error | null;
 };
 
+export type Interval = {
+  clear?: () => void;
+};
+
 /**
  * Hook to show the progress of a promise
  * 
@@ -47,7 +51,7 @@ export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = n
  * @param  {number} delay
  * @returns void
  */
-export const useInterval = (callback: () => void, delay: number): void => {
+export const useInterval = (callback: (interval: Interval) => void, delay: number): void => {
   const callbackRef = useRef();
 
   useEffect(() => {
@@ -55,13 +59,17 @@ export const useInterval = (callback: () => void, delay: number): void => {
   }, [callback]);
 
   useEffect(() => {
+    const interval: Interval = {
+      clear: undefined,
+    };
+  
     const run = () => {
-      callbackRef.current();
+      callbackRef.current(interval);
     };
 
     if (delay !== null) {
-      const interval = setInterval(run, delay);
-      return () => clearInterval(interval);
+      const intervalRef = setInterval(run, delay);
+      interval.clear = () => clearInterval(intervalRef);
     }
   }, [delay]);
 };

@@ -7,6 +7,8 @@ import 'react-native-get-random-values';
 
 const KEY = 'SECURE_DEVICE_ID';
 
+const CONNECTION_DETAILS_KEY = 'CONNECTION_DETAILS';
+
 /** 
  * Checks if the platform is web
  * @returns boolean
@@ -47,6 +49,44 @@ export const getDeviceId = async (): Promise<string> => {
   const deviceId = fetchUUID || uuidv4();
   await setValue(KEY, deviceId.toString());
   return deviceId;
+};
+
+export type ConnectionDetails = {
+  applicationId: string;
+  deviceCode: string;
+  accessToken: {
+    value: string;
+    expiresAt: number;
+  };
+  refreshToken: {
+    value: string;
+    expiresAt: number;
+  };
+};
+
+/**
+ * Saves the connection details
+ * 
+ * @param  {ConnectionDetails} connectionDetails
+ * @returns Promise<void>
+ */
+export const saveConnectionDetails = async (connectionDetails: ConnectionDetails): Promise<void> => {
+  await setValue(CONNECTION_DETAILS_KEY, JSON.stringify(connectionDetails));
+};
+
+/**
+ * Gets the stored connection details
+ * 
+ * @returns Promise<ConnectionDetails | undefined>
+ */
+export const getConnectionDetails = async (): Promise<ConnectionDetails | undefined> => {
+  const data = await getValue(CONNECTION_DETAILS_KEY);
+  try {
+    const details = JSON.parse(data);
+    return details as ConnectionDetails;
+  } catch (error) {
+    return undefined;
+  }
 };
 
 /**

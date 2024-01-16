@@ -16,6 +16,8 @@ export default {
     defaultErrorMessage: 'Lamentamos, pero parece que hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o póngase en contacto con nuestro equipo de soporte para obtener ayuda.',
     toConnectMessage: 'Para completar el proceso de conexión, utilice el siguiente código:',
     successConnectionMessage: 'Dispositivo conectado existosamente!',
+    alreadyConnectedMessage: 'Dispositivo ya está conectado. Si, quiere reestablecer la conexión nuevamente presione el botón debajo.',
+    reconnect: 'Reconectar',
     details: 'Detalles',
     id: 'Id',
     return: 'Regresar',
