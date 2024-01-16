@@ -31,15 +31,26 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
     error,
     loading,
     connect,
+    clear,
+    connectionDetails,
   } = useConnection();
-  const messageKey = getMessageKey(data);
+  const messageKey = getMessageKey(data, connectionDetails);
   return (
     <AppView
       headerMessage={t(messageKey)}
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={!data?.userCode}>
+      <ConditionalContainer display={connectionDetails.deviceCode}>
+        <ActionButton
+          icon="connection"
+          message={t('translation:reconnect')}
+          onPress={() => {
+            clear();
+          }}
+        />
+      </ConditionalContainer>
+      <ConditionalContainer display={!data?.userCode && !connectionDetails.deviceCode}>
         <ConnectForm
           onSubmit={(applicationId) => {
             connect(applicationId);
