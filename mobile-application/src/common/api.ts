@@ -1,4 +1,5 @@
 import * as api from '../generated/api';
+import { getConnectionDetails } from './helpers';
 
 // TODO: Move to a models file
 export type ServicesData = {
@@ -38,10 +39,19 @@ export type DeviceAuthData = {
 
 const AUTHORIZATION_PENDING_CODE = 'authorization_pending';
 
+const DEVICE_NOT_CONNECTED_ERROR = new Error('Device is not connected');
+
+const APP_PROTO = 'app://';
+
+
 // TODO: Read from env vars/config
-const getAPIInstance = () => new api.AuthApi(new api.Configuration({
+const getConfiguration = () => new api.Configuration({
   basePath: 'http://localhost:5000',
-}));
+});
+
+const getAuthAPIInstance = () => new api.AuthApi(getConfiguration());
+
+const getCategoriesAPIInstance = () => new api.CategoriesApi(getConfiguration());
 
 /**
  * To simulate a delay
@@ -99,35 +109,23 @@ export const loadServices = async (categoryId: number): Promise<ServicesData> =>
  * @returns Promise<CategoriesData>
  */
 export const loadCategories = async (): Promise<CategoriesData> => {
-  await delay(2000);
+  const apiInstance = getCategoriesAPIInstance();
+  const connectionDetails = await getConnectionDetails();
+
+  if (!connectionDetails?.applicationId) {
+    throw DEVICE_NOT_CONNECTED_ERROR;
+  }
+
+  const response = await apiInstance.getCategoriesApiV1CategoriesGet(connectionDetails?.applicationId);
+
   return {
-    total: 3,
-    items: [
-      {
-        id: 'category-1',
-        name: 'results',
-        label: 'Categoria I',
-        icon: 'file-multiple',
-      },
-      {
-        id: 'category-2',
-        name: 'analysis',
-        label: 'Categoria II',
-        icon: 'poll',
-      },
-      {
-        id: 'category-3',
-        name: 'information',
-        label: 'Categoria III',
-        icon: 'information',
-      },
-      {
-        id: 'category-4',
-        name: 'cat4',
-        label: 'Categoria IV',
-        icon: 'web',
-      }
-    ],
+    total: response.length,
+    items: response.map(item => ({
+      id: item.id.toString(),
+      name: item.name,
+      label: item.name,
+      icon: item.iconUrl.replace(APP_PROTO, ''),
+    })),
   };
 };
 
@@ -152,12 +150,12 @@ export const loadTicketDetails = async (service: string): Promise<TicketDetailsD
 
 /**
  * Connects a device
- * @param  {string} realm 
+ * @param  {string} applicationId 
  * @returns Promise<DeviceConnectionData>
  */
-export const connectDevice = async (realm: string): Promise<DeviceConnectionData> => {
-  const apiInstance = getAPIInstance();
-  const response = await apiInstance.authorizeDeviceAuthRealmDeviceGet(realm);
+export const connectDevice = async (applicationId: string): Promise<DeviceConnectionData> => {
+  const apiInstance = getAuthAPIInstance();
+  const response = await apiInstance.authorizeDeviceApiV1AuthDeviceGet(applicationId);
   return {
     deviceCode: response.data.deviceCode,
     userCode: response.data.userCode,
@@ -169,16 +167,16 @@ export const connectDevice = async (realm: string): Promise<DeviceConnectionData
 
 /**
  * Gets the tokens for the device
-* @param  {string} realm 
+* @param  {string} applicationId 
 * @param  {string} deviceCode
  * @returns Promise<DeviceAuthData>
  */
-export const getTokensForDevice = async (realm: string, deviceCode: string): Promise<DeviceAuthData> => {
+export const getTokensForDevice = async (applicationId: string, deviceCode: string): Promise<DeviceAuthData> => {
   try {
-    const apiInstance = getAPIInstance();
-    const response = await apiInstance.getAuthTokensAuthRealmTokensPost({
+    const apiInstance = getAuthAPIInstance();
+    const response = await apiInstance.getAuthTokensApiV1AuthTokensPost({
       deviceCode,
-    }, realm);
+    }, applicationId);
 
     return {
       refreshToken: response.data.refreshToken,

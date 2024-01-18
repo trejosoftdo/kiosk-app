@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   title: {
     color: AppLightTheme.colors.secondary,
     paddingTop: 10,
+    textAlign: 'center',
   },
 });
 

@@ -86,6 +86,7 @@ const useConnection = (): ConnectionResult => {
       setData(data);
       setExpireTime(new Date().getTime() + data.expiresIn * 1000);
     }).catch((error) => {
+      console.log(error);
       setError(error);
     }).finally(() => {
       setLoading(false);
