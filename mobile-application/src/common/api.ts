@@ -53,6 +53,8 @@ const getAuthAPIInstance = () => new api.AuthApi(getConfiguration());
 
 const getCategoriesAPIInstance = () => new api.CategoriesApi(getConfiguration());
 
+const getServicesAPIInstance = () => new api.ServicesApi(getConfiguration());
+
 /**
  * To simulate a delay
  * @param  {NoSubstitutionTemplateLiteral} timeout
@@ -68,39 +70,24 @@ const delay = (timeout: number): Promise<void> => new Promise((resolve): void =>
  * @returns Promise<ServicesData>
  */
 export const loadServices = async (categoryId: number): Promise<ServicesData> => {
-  await delay(2000);
+  const apiInstance = getCategoriesAPIInstance();
+  const connectionDetails = await getConnectionDetails();
+
+  if (!connectionDetails?.applicationId) {
+    throw DEVICE_NOT_CONNECTED_ERROR;
+  }
+
+  const response = await apiInstance.getCategoryServices(categoryId, connectionDetails.applicationId);
+
   return {
-    total: 3,
-    items: [
-      {
-        id: 'results-id',
-        name: 'results',
-        label: 'Resultados',
-        icon: 'file-multiple',
-        categoryId,
-      },
-      {
-        id: 'analysis-id',
-        name: 'analysis',
-        label: 'Analisis',
-        icon: 'poll',
-        categoryId,
-      },
-      {
-        id: 'information-id',
-        name: 'information',
-        label: 'Informacion',
-        icon: 'information',
-        categoryId,
-      },
-      {
-        id: 'general-id',
-        name: 'general',
-        label: 'General',
-        icon: 'web',
-        categoryId,
-      }
-    ],
+    total: response.length,
+    items: response.map(item => ({
+      id: item.id.toString(),
+      name: item.name,
+      label: item.name,
+      icon: item.iconUrl.replace(APP_PROTO, ''),
+      categoryId,
+    })),
   };
 };
 
@@ -116,7 +103,7 @@ export const loadCategories = async (): Promise<CategoriesData> => {
     throw DEVICE_NOT_CONNECTED_ERROR;
   }
 
-  const response = await apiInstance.getCategoriesApiV1CategoriesGet(connectionDetails?.applicationId);
+  const response = await apiInstance.getCategories(connectionDetails.applicationId);
 
   return {
     total: response.length,
@@ -131,19 +118,30 @@ export const loadCategories = async (): Promise<CategoriesData> => {
 
 /**
  * Loads ticket details
- * @param  {string} service
+ * @param  {string} serviceId
  * @returns Promise<TicketDetailsData>
  */
-export const loadTicketDetails = async (service: string): Promise<TicketDetailsData> => {
-  await delay(2000);
-  const time = new Date().getTime().toString(); 
+export const loadTicketDetails = async (serviceId: string): Promise<TicketDetailsData> => {
+  const apiInstance = getServicesAPIInstance();
+  const connectionDetails = await getConnectionDetails();
+
+  if (!connectionDetails?.applicationId) {
+    throw DEVICE_NOT_CONNECTED_ERROR;
+  }
+
+  const response = await apiInstance.createServiceTurn(
+    { customerName: '' },
+    +serviceId,
+    connectionDetails.applicationId
+  );
+
   return {
     details: {
-      id: 'ticket-id',
-      service,
-      value: `${service.slice(0, 2).toUpperCase()}-${time.slice(time.length - 3)}`,
+      id: response.id,
+      service: serviceId,
+      value: response.ticketNumber,
     },
-    usersInQueue: 10,
+    usersInQueue: response.peopleInQueue,
   };
 };
 
@@ -155,7 +153,7 @@ export const loadTicketDetails = async (service: string): Promise<TicketDetailsD
  */
 export const connectDevice = async (applicationId: string): Promise<DeviceConnectionData> => {
   const apiInstance = getAuthAPIInstance();
-  const response = await apiInstance.authorizeDeviceApiV1AuthDeviceGet(applicationId);
+  const response = await apiInstance.authorizeDevice(applicationId);
   return {
     deviceCode: response.data.deviceCode,
     userCode: response.data.userCode,
@@ -174,7 +172,7 @@ export const connectDevice = async (applicationId: string): Promise<DeviceConnec
 export const getTokensForDevice = async (applicationId: string, deviceCode: string): Promise<DeviceAuthData> => {
   try {
     const apiInstance = getAuthAPIInstance();
-    const response = await apiInstance.getAuthTokensApiV1AuthTokensPost({
+    const response = await apiInstance.getAuthTokens({
       deviceCode,
     }, applicationId);
 
