@@ -43,7 +43,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={connectionDetails.deviceCode}>
+      <ConditionalContainer display={!!connectionDetails?.deviceCode}>
         <ActionButton
           icon="connection"
           message={t('translation:reconnect')}
@@ -52,7 +52,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
           }}
         />
       </ConditionalContainer>
-      <ConditionalContainer display={!data?.userCode && !connectionDetails.deviceCode}>
+      <ConditionalContainer display={!data?.userCode && !connectionDetails?.deviceCode}>
         <ConnectForm
           onSubmit={(applicationId) => {
             connect(applicationId);
@@ -66,7 +66,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
           icon="lock"
         />
       </ConditionalContainer>
-      <ConditionalContainer display={data?.tokens?.accessToken}>
+      <ConditionalContainer display={!!data?.tokens?.accessToken}>
         <ActionButton
           icon="arrow-left-top"
           message={t('translation:return')}

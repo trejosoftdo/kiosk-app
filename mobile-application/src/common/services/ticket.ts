@@ -26,7 +26,7 @@ export const loadTicketDetails = async (serviceId: string, customerName: string)
 
   return {
     details: {
-      id: response.id,
+      id: response.id.toString(),
       service: serviceId,
       value: response.ticketNumber,
     },

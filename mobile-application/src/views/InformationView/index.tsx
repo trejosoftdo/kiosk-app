@@ -25,8 +25,9 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={data?.deviceId}>
+      <ConditionalContainer display={!!data?.deviceId}>
         <List.Accordion
+          title=""
           style={styles.container}
           left={props => (
             <View style={styles.title}>

@@ -1,5 +1,5 @@
-import { Progress, useProgress } from "../common/hooks";
-import { TicketDetailsData } from "../common/models";
+import { useProgress } from "../common/hooks";
+import { Progress, TicketDetailsData } from "../common/models";
 import { loadTicketDetails } from "../common/services/ticket";
 
 /**

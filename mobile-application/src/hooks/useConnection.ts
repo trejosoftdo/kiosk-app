@@ -1,19 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { Progress, useInterval } from "../common/hooks";
-import { DeviceAuthData, DeviceConnectionData } from "../common/models";
+import { useInterval } from "../common/hooks";
+import { ConnectionData, ConnectionDetails, ConnectionResult, DeviceAuthData, DeviceConnectionData, Progress } from "../common/models";
 import { connectDevice, getTokensForDevice } from "../common/services/auth";
 import { getConnectionDetails, saveConnectionDetails } from "../common/device-connection";
-import { getCurrentTime } from "../common/helpers";
+import { calculateExpireTime, getCurrentTime } from "../common/helpers";
 import { EMPTY_VALUE, INTERVAL_TIME, ONE_SECOND_MILISECONDS } from "../common/constants";
 
-
-/**
- * Calculates the expire time
- * 
- * @param  {number} expiresIn
- * @returns number
- */
-const calculateExpireTime = (expiresIn: number): number => getCurrentTime() + expiresIn * ONE_SECOND_MILISECONDS;
 
 /**
  * Hook used to connect the device
@@ -24,8 +16,8 @@ const useConnection = (): ConnectionResult => {
   const [applicationId, setApplicationId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [data, setData] = useState({});
-  const [connectionDetails, setConnectionDetails] = useState({});
+  const [data, setData] = useState<ConnectionData>({});
+  const [connectionDetails, setConnectionDetails] = useState<ConnectionDetails>(undefined);
   const [expireTime, setExpireTime] = useState(null);
 
   useEffect(() => {
@@ -100,7 +92,7 @@ const useConnection = (): ConnectionResult => {
     setError(null);
     setData({});
     setExpireTime(null);
-    setConnectionDetails({});
+    setConnectionDetails(undefined);
   };
 
   return {

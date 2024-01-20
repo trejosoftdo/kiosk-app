@@ -7,7 +7,7 @@ import { ConnectionData, ConnectionDetails } from "../../common/models";
  * @returns string
  */
 export const getMessageKey = (data: ConnectionData, connectionDetails?: ConnectionDetails): string => {
-  if (connectionDetails.accessToken) {
+  if (connectionDetails?.accessToken) {
     return 'translation:alreadyConnectedMessage';
   }
 

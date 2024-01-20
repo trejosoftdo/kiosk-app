@@ -12,7 +12,7 @@ import AppLightTheme from '../theme';
 
 type AppHeaderProps = {
   title: string;
-  headerRight?: () => React.Node;
+  headerRight?: () => React.ReactNode;
 };
 
 

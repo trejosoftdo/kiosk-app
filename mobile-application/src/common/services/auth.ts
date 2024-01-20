@@ -1,6 +1,7 @@
 import * as api from '../../generated/api';
 import { DeviceAuthData, DeviceConnectionData, TokenData } from '../models';
 import { AUTHORIZATION_PENDING_CODE, VALIDATION_ERROR_STATUS_CODE } from '../constants';
+import { calculateExpireTime } from '../helpers';
 import { getAuthAPIInstance } from './api-configuration';
 
 
@@ -62,6 +63,6 @@ export const getNewAccessToken = async (applicationId: string, refreshToken: str
   const response = await apiInstance.getNewAccessToken({ refreshToken }, applicationId);
   return {
     value: response.data.accessToken,
-    expiresIn: response.data.expiresIn,
+    expiresAt: calculateExpireTime(response.data.expiresIn),
   };
 };

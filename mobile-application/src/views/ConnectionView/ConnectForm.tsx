@@ -32,7 +32,7 @@ const ConnectForm: React.FC<ConnectFormProps> = (props: ConnectFormProps) => {
           label={t('translation:application')}
           value={applicationId}
           onChangeText={text => setApplicationId(text)}
-          type="flat"
+          mode="flat"
           left={<TextInput.Icon icon="application-brackets-outline" />}
         />
       </Card.Content>

@@ -23,7 +23,7 @@ const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServ
     loading,
     data,
     error,
-  } = useServices(params.categoryId);
+  } = useServices(+params.categoryId.toString());
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:chooseServiceMessage';
   return (
@@ -32,7 +32,7 @@ const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServ
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={!loading && data}>
+      <ConditionalContainer display={!loading && !!data}>
         <Cards
           items={data?.items}
           onItemSelect={(item) => {
