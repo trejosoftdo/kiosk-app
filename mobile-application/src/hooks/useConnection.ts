@@ -1,17 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { Progress, useInterval } from "../common/hooks";
-import { DeviceAuthData, DeviceConnectionData, connectDevice, getTokensForDevice } from "../common/api";
+import { DeviceAuthData, DeviceConnectionData } from "../common/models";
+import { connectDevice, getTokensForDevice } from "../common/services/auth";
 import { getConnectionDetails, saveConnectionDetails } from "../common/helpers";
 
-export type ConnectionData = DeviceConnectionData & {
-  tokens?: DeviceAuthData;
-};
-
-export type ConnectionResult = Progress<ConnectionData> & {
-  connect: (applicationId: string) => void;
-  clear: () => void;
-  connectionDetails?: ConnectionDetails;
-};
 
 /**
  * Hook used to connect the device

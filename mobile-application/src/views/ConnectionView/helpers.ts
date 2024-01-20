@@ -1,5 +1,4 @@
-import { ConnectionDetails } from "../../common/helpers";
-import { ConnectionData } from "../../hooks/useConnection";
+import { ConnectionData, ConnectionDetails } from "../../common/models";
 
 /**
  * Gets the correct message key from the data state

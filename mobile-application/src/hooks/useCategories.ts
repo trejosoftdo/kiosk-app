@@ -1,5 +1,6 @@
-import { CategoriesData, loadCategories } from "../common/api";
 import { Progress, useProgress } from "../common/hooks";
+import { CategoriesData } from "../common/models";
+import { loadCategories } from "../common/services/category";
 
 /**
  * Hook to get the available categories
