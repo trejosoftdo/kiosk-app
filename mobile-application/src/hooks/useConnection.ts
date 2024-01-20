@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Progress, useInterval } from "../common/hooks";
 import { DeviceAuthData, DeviceConnectionData } from "../common/models";
 import { connectDevice, getTokensForDevice } from "../common/services/auth";
-import { getConnectionDetails, saveConnectionDetails } from "../common/helpers";
+import { getConnectionDetails, saveConnectionDetails } from "../common/device-connection";
 
 
 /**

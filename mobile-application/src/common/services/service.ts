@@ -1,6 +1,6 @@
 import * as api from '../../generated/api';
-import { APP_PROTO, DEVICE_NOT_CONNECTED_ERROR } from '../constants';
-import { getConnectionDetails } from '../helpers';
+import { APP_PROTO } from '../constants';
+import { getDeviceAuthHeaders } from '../device-connection';
 import { ServicesData } from '../models';
 import { getCategoriesAPIInstance } from './api-configuration';
 
@@ -10,19 +10,15 @@ import { getCategoriesAPIInstance } from './api-configuration';
  */
 export const loadServices = async (categoryId: number): Promise<ServicesData> => {
   const apiInstance = getCategoriesAPIInstance();
-  const connectionDetails = await getConnectionDetails();
-
-  if (
-    !connectionDetails?.applicationId ||
-    !connectionDetails?.accessToken
-  ) {
-    throw DEVICE_NOT_CONNECTED_ERROR;
-  }
+  const {
+    applicationId,
+    authorization,
+  } = await getDeviceAuthHeaders();
 
   const response = await apiInstance.getCategoryServices(
     categoryId,
-    connectionDetails.applicationId,
-    `Bearer ${connectionDetails.accessToken.value}`
+    applicationId,
+    authorization
   );
 
   return {

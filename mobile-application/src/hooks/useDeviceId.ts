@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { loadServices } from "../common/api";
-import { getDeviceId } from "../common/helpers";
+import { getDeviceId } from "../common/device-connection";
 import { useProgress } from "../common/hooks";
 
 
