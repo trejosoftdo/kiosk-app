@@ -44,12 +44,6 @@ export const getConnectionDetails = async (): Promise<ConnectionDetails | undefi
 
 const hasExpired = ({ expiresAt }: { expiresAt: number }): boolean => {
   const currentTime = new Date().getTime();
-
-  console.log({
-    expiresAt,
-    currentTime,
-    hasAccesTokenExpired: currentTime > expiresAt,
-  });
   return currentTime > expiresAt;
 };
 
@@ -67,7 +61,6 @@ export const getDeviceAuthHeaders = async (): AuthHeaders => {
   ) {
     throw DEVICE_NOT_CONNECTED_ERROR;
   }
-
 
   if (hasExpired(connectionDetails.accessToken)) {
     if (hasExpired(connectionDetails.refreshToken)) {
