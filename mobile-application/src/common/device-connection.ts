@@ -4,7 +4,17 @@ import { CONNECTION_DETAILS_KEY, CONNECTION_EXPIRED_ERROR_MESSAGE, DEVICE_ID_KEY
 import { DEVICE_NOT_CONNECTED_ERROR } from './errors';
 import { getValue, setValue } from './store';
 import { getNewAccessToken } from './services/auth';
+import { BEARER_PORTION } from './constants';
+import { getCurrentTime } from './helpers';
 
+
+/**
+ * Checks if a time has expired
+ * 
+ * @param  {{expiresAt:number}} {expiresAt}
+ * @returns boolean
+ */
+const hasExpired = ({ expiresAt }: { expiresAt: number }): boolean => getCurrentTime() > expiresAt;
 
 /**
  * Gets the device/installation id
@@ -42,11 +52,6 @@ export const getConnectionDetails = async (): Promise<ConnectionDetails | undefi
   }
 };
 
-const hasExpired = ({ expiresAt }: { expiresAt: number }): boolean => {
-  const currentTime = new Date().getTime();
-  return currentTime > expiresAt;
-};
-
 /**
  * Gets the device auth headers to consume the APIs
  * 
@@ -76,6 +81,6 @@ export const getDeviceAuthHeaders = async (): AuthHeaders => {
 
   return {
     applicationId: connectionDetails.applicationId,
-    authorization: `Bearer ${connectionDetails.accessToken.value}`,
+    authorization: `${BEARER_PORTION} ${connectionDetails.accessToken.value}`,
   };
 };

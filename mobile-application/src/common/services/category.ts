@@ -1,8 +1,8 @@
 import * as api from '../../generated/api';
 import { CategoriesData } from '../models';
 import { getDeviceAuthHeaders } from '../device-connection';
-import { APP_PROTO } from '../constants';
 import { getCategoriesAPIInstance } from './api-configuration';
+import { extractIconName } from '../helpers';
 
 /**
  * Load categories data
@@ -23,7 +23,7 @@ export const loadCategories = async (): Promise<CategoriesData> => {
       id: item.id.toString(),
       name: item.name,
       label: item.name,
-      icon: item.iconUrl.replace(APP_PROTO, ''),
+      icon: extractIconName(item.iconUrl),
     })),
   };
 };

@@ -9,9 +9,11 @@ import {
   ConditionalContainer,
   Value,
 } from '../../common/components';
+import { HOME_PATH } from '../../common/constants';
 import { getMessageKey } from './helpers';
 import ConnectForm from './ConnectForm';
 import VerificationQRCode from './VerificationQRCode';
+
 
 
 /**
@@ -69,7 +71,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
           icon="arrow-left-top"
           message={t('translation:return')}
           onPress={() => {
-            goToPath('/');
+            goToPath(HOME_PATH);
           }}
         />
       </ConditionalContainer>

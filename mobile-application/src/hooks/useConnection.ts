@@ -3,7 +3,17 @@ import { Progress, useInterval } from "../common/hooks";
 import { DeviceAuthData, DeviceConnectionData } from "../common/models";
 import { connectDevice, getTokensForDevice } from "../common/services/auth";
 import { getConnectionDetails, saveConnectionDetails } from "../common/device-connection";
+import { getCurrentTime } from "../common/helpers";
+import { EMPTY_VALUE, INTERVAL_TIME, ONE_SECOND_MILISECONDS } from "../common/constants";
 
+
+/**
+ * Calculates the expire time
+ * 
+ * @param  {number} expiresIn
+ * @returns number
+ */
+const calculateExpireTime = (expiresIn: number): number => getCurrentTime() + expiresIn * ONE_SECOND_MILISECONDS;
 
 /**
  * Hook used to connect the device
@@ -51,11 +61,11 @@ const useConnection = (): ConnectionResult => {
               deviceCode: data?.deviceCode,
               accessToken: {
                 value: tokens.accessToken,
-                expiresAt: new Date().getTime() + tokens.expiresIn * 1000,
+                expiresAt: calculateExpireTime(tokens.expiresIn),
               },
               refreshToken: {
                 value: tokens.refreshToken,
-                expiresAt: new Date().getTime() + tokens.refreshExpiresIn * 1000,
+                expiresAt: calculateExpireTime(tokens.refreshExpiresIn),
               },
             });
           }
@@ -64,11 +74,11 @@ const useConnection = (): ConnectionResult => {
         });
     }
 
-    const currentTime = new Date().getTime();
+    const currentTime = getCurrentTime();
     if (interval.clear && ((expireTime && currentTime >= expireTime) || data?.tokens?.accessToken)) {
       interval.clear();
     }
-  }, 10000);
+  }, INTERVAL_TIME);
 
   const connect = (appId: string): void => {
     setLoading(true);
@@ -76,7 +86,7 @@ const useConnection = (): ConnectionResult => {
     setError(null);
     connectDevice(appId).then(data => {
       setData(data);
-      setExpireTime(new Date().getTime() + data.expiresIn * 1000);
+      setExpireTime(calculateExpireTime(data.expiresIn));
     }).catch((error) => {
       setError(error);
     }).finally(() => {
@@ -86,7 +96,7 @@ const useConnection = (): ConnectionResult => {
 
   const clear = () => {
     setLoading(false);
-    setApplicationId('');
+    setApplicationId(EMPTY_VALUE);
     setError(null);
     setData({});
     setExpireTime(null);

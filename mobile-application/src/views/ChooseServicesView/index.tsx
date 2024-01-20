@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { AppView, Cards, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import useServices from '../../hooks/useServices';
+import { TICKET_DETAILS_PATH } from '../../common/constants';
 
 
 /**
@@ -36,7 +37,7 @@ const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServ
           items={data?.items}
           onItemSelect={(item) => {
             goToPath(
-              '/ticket-details',
+              TICKET_DETAILS_PATH,
               {
                 serviceId: item.id,
                 serviceLabel: item.label,

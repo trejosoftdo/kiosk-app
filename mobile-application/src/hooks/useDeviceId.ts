@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { loadServices } from "../common/api";
 import { getDeviceId } from "../common/device-connection";
 import { useProgress } from "../common/hooks";
-
-
-type DeviceData = {
-  deviceId: string;
-}
+import { DeviceData } from "../common/models";
 
 /**
  * Hook to get the device identifier

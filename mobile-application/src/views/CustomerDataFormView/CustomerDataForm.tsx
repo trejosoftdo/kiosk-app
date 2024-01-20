@@ -4,6 +4,7 @@ import { Card, TextInput } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import ActionButton from '../../common/components/ActionButton';
 import AppLightTheme from '../../common/theme';
+import { EMPTY_VALUE } from '../../common/constants';
 
 
 /**
@@ -22,7 +23,7 @@ interface CustomerDataFormProps {
  */
 const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFormProps) => {
   const { t } = useTranslation();
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState(EMPTY_VALUE);
   return (
     <Card style={styles.container} mode="outlined">
       <Card.Content>
@@ -40,7 +41,7 @@ const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFo
           icon="page-next"
           message={t('translation:continue')}
           onPress={() => {
-            setName('');
+            setName(EMPTY_VALUE);
             props.onSubmit(name);
           }}
         />
