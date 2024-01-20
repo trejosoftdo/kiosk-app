@@ -1,6 +1,5 @@
 import * as api from '../../generated/api';
-import { DEVICE_NOT_CONNECTED_ERROR } from '../constants';
-import { getConnectionDetails } from '../helpers';
+import { getDeviceAuthHeaders } from '../device-connection';
 import { TicketDetailsData } from '../models';
 import { getServicesAPIInstance } from './api-configuration';
 
@@ -8,24 +7,21 @@ import { getServicesAPIInstance } from './api-configuration';
 /**
  * Loads ticket details
  * @param  {string} serviceId
+ * @param  {string} customerName
  * @returns Promise<TicketDetailsData>
  */
-export const loadTicketDetails = async (serviceId: string): Promise<TicketDetailsData> => {
+export const loadTicketDetails = async (serviceId: string, customerName: string = ''): Promise<TicketDetailsData> => {
   const apiInstance = getServicesAPIInstance();
-  const connectionDetails = await getConnectionDetails();
-
-  if (
-    !connectionDetails?.applicationId ||
-    !connectionDetails?.accessToken
-  ) {
-    throw DEVICE_NOT_CONNECTED_ERROR;
-  }
+  const {
+    applicationId,
+    authorization,
+  } = await getDeviceAuthHeaders();
 
   const response = await apiInstance.createServiceTurn(
-    { customerName: '' },
+    { customerName },
     +serviceId,
-    connectionDetails.applicationId,
-    `Bearer ${connectionDetails.accessToken.value}`
+    applicationId,
+    authorization
   );
 
   return {

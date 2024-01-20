@@ -43,17 +43,16 @@ export type DeviceAuthData = {
   pending?: boolean;
 };
 
+export type TokenData = {
+  value: string;
+  expiresAt: number;
+};
+
 export type ConnectionDetails = {
   applicationId: string;
   deviceCode: string;
-  accessToken: {
-    value: string;
-    expiresAt: number;
-  };
-  refreshToken: {
-    value: string;
-    expiresAt: number;
-  };
+  accessToken: TokenData;
+  refreshToken: TokenData;
 };
 
 export type ConnectionData = DeviceConnectionData & {
@@ -64,4 +63,9 @@ export type ConnectionResult = Progress<ConnectionData> & {
   connect: (applicationId: string) => void;
   clear: () => void;
   connectionDetails?: ConnectionDetails;
+};
+
+export type AuthHeaders = {
+  applicationId: string;
+  authorization: string;
 };

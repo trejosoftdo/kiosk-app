@@ -8,6 +8,6 @@ import { loadTicketDetails } from "../common/services/ticket";
  * 
  * @returns Progress<TicketDetailsData>
  */
-const useTicketDetails = (service: string): Progress<TicketDetailsData> => useProgress<TicketDetailsData>(loadTicketDetails(service));
+const useTicketDetails = (service: string, customerName: string): Progress<TicketDetailsData> => useProgress<TicketDetailsData>(loadTicketDetails(service, customerName));
 
 export default useTicketDetails;
