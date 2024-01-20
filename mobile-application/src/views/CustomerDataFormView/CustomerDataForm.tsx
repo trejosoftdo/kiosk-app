@@ -32,7 +32,7 @@ const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFo
           label={t('translation:name')}
           value={name}
           onChangeText={text => setName(text)}
-          type="flat"
+          mode="flat"
           left={<TextInput.Icon icon="account" />}
         />
       </Card.Content>

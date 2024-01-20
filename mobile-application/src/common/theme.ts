@@ -20,6 +20,10 @@ const commonFontConfig = {
     fontFamily: DEFAULT_LIGHT_FONT_NAME,
     fontWeight: NORMAL_FONT_WEIGHT,
   },
+  thin: {
+    fontFamily: DEFAULT_LIGHT_FONT_NAME,
+    fontWeight: NORMAL_FONT_WEIGHT,
+  },
   titleMedium: {
     fontFamily: DEFAULT_REGULAR_FONT_NAME,
     fontSize: 16,
@@ -40,27 +44,6 @@ const commonFontConfig = {
     fontWeight: "400",
     letterSpacing: 0,
     lineHeight: 28,
-  },
-  labelLarge: {
-    fontFamily: DEFAULT_REGULAR_FONT_NAME,
-    fontSize: 14,
-    fontWeight: "500",
-    letterSpacing: 0.1,
-    lineHeight: 20,
-  },
-  labelMedium: {
-    fontFamily: DEFAULT_REGULAR_FONT_NAME,
-    fontSize: 12,
-    fontWeight: "500",
-    letterSpacing: 0.5,
-    lineHeight: 16,
-  },
-  labelSmall: {
-    fontFamily: DEFAULT_REGULAR_FONT_NAME,
-    fontSize: 11,
-    fontWeight: "500",
-    letterSpacing: 0.5,
-    lineHeight: 16,
   },
   headlineSmall: {
     fontFamily: DEFAULT_REGULAR_FONT_NAME,
@@ -125,10 +108,6 @@ const commonFontConfig = {
     letterSpacing: 0.15,
     lineHeight: 24,
   },
-  thin: {
-    fontFamily: DEFAULT_LIGHT_FONT_NAME,
-    fontWeight: NORMAL_FONT_WEIGHT,
-  },
 };
 
 const fontConfig = {
@@ -149,7 +128,8 @@ const AppLightTheme = {
     tertiaryContainer: '#feeef4',
     secondary: '#3c3744',
   },
-  fonts: configureFonts({config: fontConfig, isV3: false}),
+  // @ts-ignore
+  fonts: configureFonts({ config: fontConfig, isV3: false }),
 };
 
 export default AppLightTheme;

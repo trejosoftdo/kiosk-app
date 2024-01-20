@@ -32,7 +32,7 @@ const ChooseCategoriesView: React.FC<ChooseCategoriesViewProps> = (props: Choose
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={!loading && data}>
+      <ConditionalContainer display={!loading && !!data}>
         <Cards
           items={data?.items}
           onItemSelect={(item) => {

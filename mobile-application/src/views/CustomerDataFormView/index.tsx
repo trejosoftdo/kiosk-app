@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { goToPath } from '../../common/helpers';
 import { AppView } from '../../common/components';
 import { CATEGORIES_PATH } from '../../common/constants';
-import { getMessageKey } from './helpers';
 import CustomerDataForm from './CustomerDataForm';
 
 /**

@@ -24,16 +24,16 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
     loading,
     data,
     error,
-  } = useTicketDetails(params.serviceId, params.customerName);
+  } = useTicketDetails(params.serviceId.toString(), params.customerName.toString());
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
     <AppView
-      headerMessage={t(messageKey, { service: params.serviceLabel, customer: params.customerName })}
+      headerMessage={t(messageKey, { service: params.serviceLabel.toString(), customer: params.customerName.toString() })}
       loading={loading}
       error={error}
     >
-      <ConditionalContainer display={!loading && data}>
+      <ConditionalContainer display={!loading && !!data}>
         <>
           <Value
             value={data?.details.value}

@@ -17,7 +17,7 @@ import ErrorMessage from './ErrorMessage';
  */
 interface AppViewProps {
   headerMessage: string;
-  children: React.Node;
+  children: React.ReactNode;
   loading?: boolean;
   error?: Error;
 }

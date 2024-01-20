@@ -38,7 +38,7 @@ const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: '8px',
+    borderRadius: 8,
   },
   label: {
     fontSize: 16,

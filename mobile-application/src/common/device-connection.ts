@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ConnectionDetails } from './models';
+import { AuthHeaders, ConnectionDetails } from './models';
 import { CONNECTION_DETAILS_KEY, CONNECTION_EXPIRED_ERROR_MESSAGE, DEVICE_ID_KEY } from './constants';
 import { DEVICE_NOT_CONNECTED_ERROR } from './errors';
 import { getValue, setValue } from './store';
@@ -57,7 +57,7 @@ export const getConnectionDetails = async (): Promise<ConnectionDetails | undefi
  * 
  * @returns AuthHeaders
  */
-export const getDeviceAuthHeaders = async (): AuthHeaders => {
+export const getDeviceAuthHeaders = async (): Promise<AuthHeaders> => {
   const connectionDetails = await getConnectionDetails();
 
   if (

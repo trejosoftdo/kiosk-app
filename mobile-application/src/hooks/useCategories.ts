@@ -1,5 +1,5 @@
-import { Progress, useProgress } from "../common/hooks";
-import { CategoriesData } from "../common/models";
+import { useProgress } from "../common/hooks";
+import { CategoriesData, Progress } from "../common/models";
 import { loadCategories } from "../common/services/category";
 
 /**

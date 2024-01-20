@@ -43,7 +43,7 @@ export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = n
  * @returns void
  */
 export const useInterval = (callback: (interval: Interval) => void, delay: number): void => {
-  const callbackRef = useRef();
+  const callbackRef = useRef<(interval: Interval) => void>(() => {});
 
   useEffect(() => {
     callbackRef.current = callback;
