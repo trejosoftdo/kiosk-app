@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { AppView, Cards, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import useCategories from '../../hooks/useCategories';
-
+import { SERVICES_PATH } from '../../common/constants';
 
 
 /**
@@ -37,12 +37,13 @@ const ChooseCategoriesView: React.FC<ChooseCategoriesViewProps> = (props: Choose
           items={data?.items}
           onItemSelect={(item) => {
             goToPath(
-              '/services',
+              SERVICES_PATH,
               {
                 customerName: params.customerName,
                 categoryId: item.id,
                 categoryLabel: item.label,
-              });
+              },
+            );
           }}
         />
       </ConditionalContainer>

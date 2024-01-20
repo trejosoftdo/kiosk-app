@@ -10,7 +10,7 @@ import { getServicesAPIInstance } from './api-configuration';
  * @param  {string} customerName
  * @returns Promise<TicketDetailsData>
  */
-export const loadTicketDetails = async (serviceId: string, customerName: string = ''): Promise<TicketDetailsData> => {
+export const loadTicketDetails = async (serviceId: string, customerName: string): Promise<TicketDetailsData> => {
   const apiInstance = getServicesAPIInstance();
   const {
     applicationId,

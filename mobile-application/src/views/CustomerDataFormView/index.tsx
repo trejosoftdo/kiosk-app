@@ -3,9 +3,9 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { goToPath } from '../../common/helpers';
 import { AppView } from '../../common/components';
+import { CATEGORIES_PATH } from '../../common/constants';
 import { getMessageKey } from './helpers';
 import CustomerDataForm from './CustomerDataForm';
-
 
 /**
  * CustomerDataFormViewProps defines the props for the Customer Data Form View Component.
@@ -23,7 +23,7 @@ const CustomerDataFormView: React.FC<CustomerDataFormViewProps> = (props: Custom
     <AppView headerMessage={t('translation:customerDataFormMessage')}>
       <CustomerDataForm
         onSubmit={(customerName) => {
-          goToPath('/categories', { customerName });
+          goToPath(CATEGORIES_PATH, { customerName });
         }}
       />
     </AppView>

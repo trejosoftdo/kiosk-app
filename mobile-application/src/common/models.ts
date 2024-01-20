@@ -69,3 +69,18 @@ export type AuthHeaders = {
   applicationId: string;
   authorization: string;
 };
+
+export type Progress<T> = {
+  loading: boolean;
+  data: T | null;
+  error: Error | null;
+};
+
+export type Interval = {
+  clear?: () => void;
+};
+
+
+export type DeviceData = {
+  deviceId: string;
+};

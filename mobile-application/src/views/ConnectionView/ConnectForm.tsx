@@ -4,6 +4,7 @@ import { Card, TextInput } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import ActionButton from '../../common/components/ActionButton';
 import AppLightTheme from '../../common/theme';
+import { EMPTY_VALUE } from '../../common/constants';
 
 
 /**
@@ -22,7 +23,7 @@ interface ConnectFormProps {
  */
 const ConnectForm: React.FC<ConnectFormProps> = (props: ConnectFormProps) => {
   const { t } = useTranslation();
-  const [applicationId, setApplicationId] = React.useState('');
+  const [applicationId, setApplicationId] = React.useState(EMPTY_VALUE);
   return (
     <Card style={styles.container} mode="outlined">
       <Card.Content>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocalSearchParams } from 'expo-router';
 import { goToPath } from '../../common/helpers';
+import { HOME_PATH } from '../../common/constants';
 import { AppView, ConditionalContainer, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
 import UsersInQueue from './UsersInQueue';
@@ -41,7 +42,7 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
           <UsersInQueue total={data?.usersInQueue} />
           <PrintButton
             onPress={() => {
-              goToPath('/');
+              goToPath(HOME_PATH);
             }}
           />
         </>

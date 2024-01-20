@@ -1,6 +1,6 @@
 import * as api from '../../generated/api';
-import { APP_PROTO } from '../constants';
 import { getDeviceAuthHeaders } from '../device-connection';
+import { extractIconName } from '../helpers';
 import { ServicesData } from '../models';
 import { getCategoriesAPIInstance } from './api-configuration';
 
@@ -27,7 +27,7 @@ export const loadServices = async (categoryId: number): Promise<ServicesData> =>
       id: item.id.toString(),
       name: item.name,
       label: item.name,
-      icon: item.iconUrl.replace(APP_PROTO, ''),
+      icon: extractIconName(item.iconUrl),
       categoryId,
     })),
   };

@@ -1,14 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
-export type Progress<T> = {
-  loading: boolean;
-  data: T | null;
-  error: Error | null;
-};
-
-export type Interval = {
-  clear?: () => void;
-};
+import { Interval, Progress } from './models';
 
 /**
  * Hook to show the progress of a promise
