@@ -1,5 +1,6 @@
-import { ServicesData, loadServices } from "../common/api";
 import { Progress, useProgress } from "../common/hooks";
+import { ServicesData } from "../common/models";
+import { loadServices } from "../common/services/service";
 
 /**
  * Hook to get the available services

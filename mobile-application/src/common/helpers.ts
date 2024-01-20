@@ -4,6 +4,8 @@ import * as SecureStore from 'expo-secure-store';
 import { v4 as uuidv4 } from 'uuid';
 import { router } from 'expo-router';
 import 'react-native-get-random-values';
+import { ConnectionDetails } from './models';
+
 
 const KEY = 'SECURE_DEVICE_ID';
 
@@ -49,19 +51,6 @@ export const getDeviceId = async (): Promise<string> => {
   const deviceId = fetchUUID || uuidv4();
   await setValue(KEY, deviceId.toString());
   return deviceId;
-};
-
-export type ConnectionDetails = {
-  applicationId: string;
-  deviceCode: string;
-  accessToken: {
-    value: string;
-    expiresAt: number;
-  };
-  refreshToken: {
-    value: string;
-    expiresAt: number;
-  };
 };
 
 /**

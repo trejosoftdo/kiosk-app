@@ -762,16 +762,21 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories(application: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
+        getCategories(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
             // verify required parameter 'application' is not null or undefined
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling getCategories.');
+            }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling getCategories.');
             }
             const localVarPath = `/api/v1/categories/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -793,6 +798,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
 
             if (application !== undefined && application !== null) {
                 localVarHeaderParameter['application'] = String(application);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -809,16 +818,21 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories_1(application: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
+        getCategories_1(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
             // verify required parameter 'application' is not null or undefined
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling getCategories_1.');
+            }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling getCategories_1.');
             }
             const localVarPath = `/api/v1/categories/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -842,6 +856,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
                 localVarHeaderParameter['application'] = String(application);
             }
 
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -857,13 +875,14 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
+        getCategoryServices(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
             // verify required parameter 'categoryId' is not null or undefined
             if (categoryId === null || categoryId === undefined) {
                 throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling getCategoryServices.');
@@ -872,6 +891,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling getCategoryServices.');
             }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling getCategoryServices.');
+            }
             const localVarPath = `/api/v1/categories/{categoryId}/services`
                 .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -893,6 +916,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
 
             if (application !== undefined && application !== null) {
                 localVarHeaderParameter['application'] = String(application);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -910,13 +937,14 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices_2(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
+        getCategoryServices_2(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options: any = {}): FetchArgs {
             // verify required parameter 'categoryId' is not null or undefined
             if (categoryId === null || categoryId === undefined) {
                 throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling getCategoryServices_2.');
@@ -924,6 +952,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
             // verify required parameter 'application' is not null or undefined
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling getCategoryServices_2.');
+            }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling getCategoryServices_2.');
             }
             const localVarPath = `/api/v1/categories/{categoryId}/services`
                 .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
@@ -946,6 +978,10 @@ export const CategoriesApiFetchParamCreator = function (configuration?: Configur
 
             if (application !== undefined && application !== null) {
                 localVarHeaderParameter['application'] = String(application);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -971,14 +1007,15 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories(application: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Category>> {
-            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategories(application, active, offset, limit, options);
+        getCategories(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Category>> {
+            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategories(application, authorization, active, offset, limit, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -993,14 +1030,15 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories_1(application: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Category>> {
-            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategories_1(application, active, offset, limit, options);
+        getCategories_1(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Category>> {
+            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategories_1(application, authorization, active, offset, limit, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1016,14 +1054,15 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CategoryService>> {
-            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategoryServices(categoryId, application, active, offset, limit, options);
+        getCategoryServices(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CategoryService>> {
+            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategoryServices(categoryId, application, authorization, active, offset, limit, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1039,14 +1078,15 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices_2(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CategoryService>> {
-            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategoryServices_2(categoryId, application, active, offset, limit, options);
+        getCategoryServices_2(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CategoryService>> {
+            const localVarFetchArgs = CategoriesApiFetchParamCreator(configuration).getCategoryServices_2(categoryId, application, authorization, active, offset, limit, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1070,55 +1110,59 @@ export const CategoriesApiFactory = function (configuration?: Configuration, fet
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories(application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-            return CategoriesApiFp(configuration).getCategories(application, active, offset, limit, options)(fetch, basePath);
+        getCategories(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+            return CategoriesApiFp(configuration).getCategories(application, authorization, active, offset, limit, options)(fetch, basePath);
         },
         /**
          * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
          * @summary Get Categories
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategories_1(application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-            return CategoriesApiFp(configuration).getCategories_1(application, active, offset, limit, options)(fetch, basePath);
+        getCategories_1(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+            return CategoriesApiFp(configuration).getCategories_1(application, authorization, active, offset, limit, options)(fetch, basePath);
         },
         /**
          * Gets the list of services asociated to a category for an application in context  Args:     categoryId (int): ID of category of the services to return.     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoryServicesListResponse: The list of services for the category
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-            return CategoriesApiFp(configuration).getCategoryServices(categoryId, application, active, offset, limit, options)(fetch, basePath);
+        getCategoryServices(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+            return CategoriesApiFp(configuration).getCategoryServices(categoryId, application, authorization, active, offset, limit, options)(fetch, basePath);
         },
         /**
          * Gets the list of services asociated to a category for an application in context  Args:     categoryId (int): ID of category of the services to return.     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoryServicesListResponse: The list of services for the category
          * @summary Get Category Services
          * @param {number} categoryId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {boolean} [active] 
          * @param {number} [offset] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryServices_2(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-            return CategoriesApiFp(configuration).getCategoryServices_2(categoryId, application, active, offset, limit, options)(fetch, basePath);
+        getCategoryServices_2(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+            return CategoriesApiFp(configuration).getCategoryServices_2(categoryId, application, authorization, active, offset, limit, options)(fetch, basePath);
         },
     };
 };
@@ -1134,6 +1178,7 @@ export class CategoriesApi extends BaseAPI {
      * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
      * @summary Get Categories
      * @param {string} application 
+     * @param {string} authorization 
      * @param {boolean} [active] 
      * @param {number} [offset] 
      * @param {number} [limit] 
@@ -1141,14 +1186,15 @@ export class CategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public getCategories(application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-        return CategoriesApiFp(this.configuration).getCategories(application, active, offset, limit, options)(this.fetch, this.basePath);
+    public getCategories(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+        return CategoriesApiFp(this.configuration).getCategories(application, authorization, active, offset, limit, options)(this.fetch, this.basePath);
     }
 
     /**
      * Gets a list of categories for the application in context  Args:     active (bool, optional): Flag to return only active records. Defaults to True.     offset (int, optional): The number of items to skip before collecting the result set. Defaults to 0.     limit (int, optional): The number of items to return. Defaults to 10.     application (str, optional): The application in context.  Returns:     models.CategoriesListResponse: The list of categories
      * @summary Get Categories
      * @param {string} application 
+     * @param {string} authorization 
      * @param {boolean} [active] 
      * @param {number} [offset] 
      * @param {number} [limit] 
@@ -1156,8 +1202,8 @@ export class CategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public getCategories_1(application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-        return CategoriesApiFp(this.configuration).getCategories_1(application, active, offset, limit, options)(this.fetch, this.basePath);
+    public getCategories_1(application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+        return CategoriesApiFp(this.configuration).getCategories_1(application, authorization, active, offset, limit, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1165,6 +1211,7 @@ export class CategoriesApi extends BaseAPI {
      * @summary Get Category Services
      * @param {number} categoryId 
      * @param {string} application 
+     * @param {string} authorization 
      * @param {boolean} [active] 
      * @param {number} [offset] 
      * @param {number} [limit] 
@@ -1172,8 +1219,8 @@ export class CategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public getCategoryServices(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-        return CategoriesApiFp(this.configuration).getCategoryServices(categoryId, application, active, offset, limit, options)(this.fetch, this.basePath);
+    public getCategoryServices(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+        return CategoriesApiFp(this.configuration).getCategoryServices(categoryId, application, authorization, active, offset, limit, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1181,6 +1228,7 @@ export class CategoriesApi extends BaseAPI {
      * @summary Get Category Services
      * @param {number} categoryId 
      * @param {string} application 
+     * @param {string} authorization 
      * @param {boolean} [active] 
      * @param {number} [offset] 
      * @param {number} [limit] 
@@ -1188,8 +1236,8 @@ export class CategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public getCategoryServices_2(categoryId: number, application: string, active?: boolean, offset?: number, limit?: number, options?: any) {
-        return CategoriesApiFp(this.configuration).getCategoryServices_2(categoryId, application, active, offset, limit, options)(this.fetch, this.basePath);
+    public getCategoryServices_2(categoryId: number, application: string, authorization: string, active?: boolean, offset?: number, limit?: number, options?: any) {
+        return CategoriesApiFp(this.configuration).getCategoryServices_2(categoryId, application, authorization, active, offset, limit, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1205,10 +1253,11 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, options: any = {}): FetchArgs {
+        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createServiceTurn.');
@@ -1221,6 +1270,10 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling createServiceTurn.');
             }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling createServiceTurn.');
+            }
             const localVarPath = `/api/v1/services/{serviceId}/serviceturns`
                 .replace(`{${"serviceId"}}`, encodeURIComponent(String(serviceId)));
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -1230,6 +1283,10 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
 
             if (application !== undefined && application !== null) {
                 localVarHeaderParameter['application'] = String(application);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1252,10 +1309,11 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, options: any = {}): FetchArgs {
+        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createServiceTurn_1.');
@@ -1268,6 +1326,10 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
             if (application === null || application === undefined) {
                 throw new RequiredError('application','Required parameter application was null or undefined when calling createServiceTurn_1.');
             }
+            // verify required parameter 'authorization' is not null or undefined
+            if (authorization === null || authorization === undefined) {
+                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling createServiceTurn_1.');
+            }
             const localVarPath = `/api/v1/services/{serviceId}/serviceturns`
                 .replace(`{${"serviceId"}}`, encodeURIComponent(String(serviceId)));
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -1277,6 +1339,10 @@ export const ServicesApiFetchParamCreator = function (configuration?: Configurat
 
             if (application !== undefined && application !== null) {
                 localVarHeaderParameter['application'] = String(application);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1308,11 +1374,12 @@ export const ServicesApiFp = function(configuration?: Configuration) {
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CreateServiceTurnResponse> {
-            const localVarFetchArgs = ServicesApiFetchParamCreator(configuration).createServiceTurn(body, serviceId, application, options);
+        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CreateServiceTurnResponse> {
+            const localVarFetchArgs = ServicesApiFetchParamCreator(configuration).createServiceTurn(body, serviceId, application, authorization, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1329,11 +1396,12 @@ export const ServicesApiFp = function(configuration?: Configuration) {
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CreateServiceTurnResponse> {
-            const localVarFetchArgs = ServicesApiFetchParamCreator(configuration).createServiceTurn_1(body, serviceId, application, options);
+        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CreateServiceTurnResponse> {
+            const localVarFetchArgs = ServicesApiFetchParamCreator(configuration).createServiceTurn_1(body, serviceId, application, authorization, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1359,11 +1427,12 @@ export const ServicesApiFactory = function (configuration?: Configuration, fetch
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any) {
-            return ServicesApiFp(configuration).createServiceTurn(body, serviceId, application, options)(fetch, basePath);
+        createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any) {
+            return ServicesApiFp(configuration).createServiceTurn(body, serviceId, application, authorization, options)(fetch, basePath);
         },
         /**
          * Creates a service turn for the given service  Args:     serviceId (int): ID of service to create a turn from     item (models.CreateServiceTurnPayload): The required payload     application (str, optional): The application in context.      Returns:     models.CreateServiceTurnResponse: Basic information of the created service turn
@@ -1371,11 +1440,12 @@ export const ServicesApiFactory = function (configuration?: Configuration, fetch
          * @param {CreateServiceTurnPayload} body 
          * @param {number} serviceId 
          * @param {string} application 
+         * @param {string} authorization 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any) {
-            return ServicesApiFp(configuration).createServiceTurn_1(body, serviceId, application, options)(fetch, basePath);
+        createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any) {
+            return ServicesApiFp(configuration).createServiceTurn_1(body, serviceId, application, authorization, options)(fetch, basePath);
         },
     };
 };
@@ -1393,12 +1463,13 @@ export class ServicesApi extends BaseAPI {
      * @param {CreateServiceTurnPayload} body 
      * @param {number} serviceId 
      * @param {string} application 
+     * @param {string} authorization 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ServicesApi
      */
-    public createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any) {
-        return ServicesApiFp(this.configuration).createServiceTurn(body, serviceId, application, options)(this.fetch, this.basePath);
+    public createServiceTurn(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any) {
+        return ServicesApiFp(this.configuration).createServiceTurn(body, serviceId, application, authorization, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1407,12 +1478,13 @@ export class ServicesApi extends BaseAPI {
      * @param {CreateServiceTurnPayload} body 
      * @param {number} serviceId 
      * @param {string} application 
+     * @param {string} authorization 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ServicesApi
      */
-    public createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, options?: any) {
-        return ServicesApiFp(this.configuration).createServiceTurn_1(body, serviceId, application, options)(this.fetch, this.basePath);
+    public createServiceTurn_1(body: CreateServiceTurnPayload, serviceId: number, application: string, authorization: string, options?: any) {
+        return ServicesApiFp(this.configuration).createServiceTurn_1(body, serviceId, application, authorization, options)(this.fetch, this.basePath);
     }
 
 }
