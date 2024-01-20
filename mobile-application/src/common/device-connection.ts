@@ -3,6 +3,7 @@ import { ConnectionDetails } from './models';
 import { CONNECTION_DETAILS_KEY, CONNECTION_EXPIRED_ERROR_MESSAGE, DEVICE_ID_KEY } from './constants';
 import { DEVICE_NOT_CONNECTED_ERROR } from './errors';
 import { getValue, setValue } from './store';
+import { getNewAccessToken } from './services/auth';
 
 
 /**
@@ -70,11 +71,9 @@ export const getDeviceAuthHeaders = async (): AuthHeaders => {
 
   if (hasExpired(connectionDetails.accessToken)) {
     if (hasExpired(connectionDetails.refreshToken)) {
-      console.log("Both access and refresh token expired");
       throw CONNECTION_EXPIRED_ERROR_MESSAGE;
     }
 
-    console.log("Renewing token");
     connectionDetails.accessToken = await getNewAccessToken(
       connectionDetails.applicationId,
       connectionDetails.refreshToken.value,

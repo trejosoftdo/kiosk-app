@@ -23,7 +23,7 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
     loading,
     data,
     error,
-  } = useTicketDetails(params.serviceId);
+  } = useTicketDetails(params.serviceId, params.customerName);
   const { t } = useTranslation();
   const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
   return (
