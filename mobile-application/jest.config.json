@@ -8,6 +8,7 @@
   "collectCoverageFrom": [
     "src/**/*.{ts,tsx}",
     "!**/coverage/**",
+    "!src/generated/**",
     "!**/node_modules/**",
     "!**/babel.config.js",
     "!**/jest.setup.js"
