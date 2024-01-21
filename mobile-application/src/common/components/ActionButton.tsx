@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 
@@ -21,20 +20,17 @@ interface ActionButtonProps {
  *
  * @param {ActionButtonProps} props - The props for the Action Button component.
  */
-const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => {
-  const { t } = useTranslation();
-  return (
-    <Button
-      style={styles.container}
-      labelStyle={styles.label}
-      mode="contained"
-      onPress={props.onPress}
-      icon={props.icon}
-    >
-      {props.message}
-    </Button>
-  );
-};
+const ActionButton: FC<ActionButtonProps> = (props: ActionButtonProps) => (
+  <Button
+    style={styles.container}
+    labelStyle={styles.label}
+    mode="contained"
+    onPress={props.onPress}
+    icon={props.icon}
+  >
+    {props.message}
+  </Button>
+);
 
 const styles = StyleSheet.create({
   container: {
