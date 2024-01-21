@@ -44,9 +44,7 @@ exports[`AppView component renders the error message when there is an error 1`] 
   <div>
     Test content
   </div>
-  <ErrorMessage
-    testID="error-message"
-  />
+  <ErrorMessage />
   <ExpoStatusBar
     style="auto"
   />
@@ -71,7 +69,6 @@ exports[`AppView component renders the loading indicator when loading 1`] = `
   />
   <LoadingIndicator
     loading={true}
-    testID="loading-indicator"
   />
   <div>
     Test content
