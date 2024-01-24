@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Interval, Progress } from './models';
+import { NO_OP } from './constants';
 
 /**
  * Hook to show the progress of a promise
@@ -43,7 +44,7 @@ export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = n
  * @returns void
  */
 export const useInterval = (callback: (interval: Interval) => void, delay: number): void => {
-  const callbackRef = useRef<(interval: Interval) => void>(() => {});
+  const callbackRef = useRef<(interval: Interval) => void>(NO_OP);
 
   useEffect(() => {
     callbackRef.current = callback;
