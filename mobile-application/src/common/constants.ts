@@ -37,3 +37,5 @@ export const TICKET_DETAILS_PATH = '/ticket-details';
 export const HOME_PATH = '/';
 
 export const CATEGORIES_PATH = '/categories';
+
+export const NO_OP = () => {};
