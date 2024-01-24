@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { AuthHeaders, ConnectionDetails } from './models';
-import { CONNECTION_DETAILS_KEY, CONNECTION_EXPIRED_ERROR_MESSAGE, DEVICE_ID_KEY } from './constants';
-import { DEVICE_NOT_CONNECTED_ERROR } from './errors';
+import { CONNECTION_DETAILS_KEY, DEVICE_ID_KEY } from './constants';
+import { DEVICE_NOT_CONNECTED_ERROR, CONNECTION_EXPIRED_ERROR } from './errors';
 import { getValue, setValue } from './store';
 import { getNewAccessToken } from './services/auth';
 import { BEARER_PORTION } from './constants';
@@ -60,16 +60,13 @@ export const getConnectionDetails = async (): Promise<ConnectionDetails | undefi
 export const getDeviceAuthHeaders = async (): Promise<AuthHeaders> => {
   const connectionDetails = await getConnectionDetails();
 
-  if (
-    !connectionDetails?.applicationId ||
-    !connectionDetails?.accessToken
-  ) {
+  if (!(connectionDetails?.applicationId && connectionDetails?.accessToken)) {
     throw DEVICE_NOT_CONNECTED_ERROR;
   }
 
   if (hasExpired(connectionDetails.accessToken)) {
     if (hasExpired(connectionDetails.refreshToken)) {
-      throw CONNECTION_EXPIRED_ERROR_MESSAGE;
+      throw CONNECTION_EXPIRED_ERROR;
     }
 
     connectionDetails.accessToken = await getNewAccessToken(
