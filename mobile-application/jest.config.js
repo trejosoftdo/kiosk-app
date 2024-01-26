@@ -7,6 +7,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     "src/**/*.{ts,tsx}",
+    "app/**/*.{ts,tsx}",
     "!**/coverage/**",
     "!src/generated/**",
     "!**/node_modules/**",

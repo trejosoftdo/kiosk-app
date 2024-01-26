@@ -3,8 +3,10 @@ import { Stack } from 'expo-router/stack';
 import { PaperProvider } from 'react-native-paper';
 import AppLightTheme from '../src/common/theme';
 import useCustomFonts from '../src/hooks/useCustomFonts';
-import '../i18n';
+import initTranslations from '../i18n';
 
+
+initTranslations();
 
 /**
  * Screens layout

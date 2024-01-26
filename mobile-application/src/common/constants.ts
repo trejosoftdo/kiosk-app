@@ -38,4 +38,6 @@ export const HOME_PATH = '/';
 
 export const CATEGORIES_PATH = '/categories';
 
+export const CONFIGURATION_PATH = '/configuration';
+
 export const NO_OP = () => {};
