@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { IconButton } from 'react-native-paper';
-import { goToPath } from '../src/common/helpers';
+import { TRANSLATION_CUSTOMER_DATA_KEY } from '../src/common/translations/translation-keys';
+import { AppHeader, ToConfigurationNavigationButton } from '../src/common/components';
 import { CustomerDataFormView } from '../src/views';
-import AppLightTheme from '../src/common/theme';
-import AppHeader from '../src/common/components/AppHeader';
 
 /**
  * Home Screen Route
@@ -13,19 +11,10 @@ const Home = () => {
   const { t } = useTranslation();
   return (
     <React.Fragment>
-        <AppHeader
-          title={t('translation:customerData')}
-          headerRight={() => (
-            <IconButton
-              icon="cog"
-              iconColor={AppLightTheme.colors.background}
-              size={20}
-              onPress={() => {
-                goToPath('/configuration');
-              }}
-            />          
-          )}
-        />
+      <AppHeader
+        title={t(TRANSLATION_CUSTOMER_DATA_KEY)}
+        headerRight={ToConfigurationNavigationButton}
+      />
       <CustomerDataFormView />
     </React.Fragment>
   );
