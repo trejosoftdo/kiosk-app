@@ -34,4 +34,4 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run types:check
-    - run: npm run test
+    - run: npm run test:coverage
