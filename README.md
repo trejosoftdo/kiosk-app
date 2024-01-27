@@ -1,6 +1,6 @@
 # QMS KIOSK APP
 
-![Build Status](https://github.com/github/docs/actions/workflows/node.js.yml/badge.svg)
+![Build Status](https://github.com/trejosoftdo/qms-kiosk-app/actions/workflows/node.js.yml/badge.svg)
 
 
 QUEUE MANAGEMENT SERVICES Kiosk Mobile application is an application to be used in services locations/branches by not registered users to get services turns and get assisted.
