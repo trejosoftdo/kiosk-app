@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
+import { TRANSLATION_CUSTOMER_DATA_FORM_MESSAGE_KEY } from '../../common/translations/translation-keys';
 import { goToPath } from '../../common/helpers';
 import { AppView } from '../../common/components';
 import { CATEGORIES_PATH } from '../../common/constants';
@@ -19,7 +20,7 @@ interface CustomerDataFormViewProps {}
 const CustomerDataFormView: React.FC<CustomerDataFormViewProps> = (props: CustomerDataFormViewProps) => {
   const { t } = useTranslation();
   return (
-    <AppView headerMessage={t('translation:customerDataFormMessage')}>
+    <AppView headerMessage={t(TRANSLATION_CUSTOMER_DATA_FORM_MESSAGE_KEY)}>
       <CustomerDataForm
         onSubmit={(customerName) => {
           goToPath(CATEGORIES_PATH, { customerName });

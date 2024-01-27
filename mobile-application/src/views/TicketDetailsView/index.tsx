@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocalSearchParams } from 'expo-router';
-import { goToPath } from '../../common/helpers';
 import { HOME_PATH } from '../../common/constants';
+import { TRANSLATION_WAIT_MESSAGE_KEY, TRANSLATION_WELCOME_TURN_KEY } from '../../common/translations/translation-keys';
+import { goToPath } from '../../common/helpers';
 import { AppView, ConditionalContainer, Value } from '../../common/components';
 import useTicketDetails from '../../hooks/useTicketDetails';
 import UsersInQueue from './UsersInQueue';
@@ -26,7 +27,7 @@ const TicketDetailsView: React.FC<TicketDetailsViewProps> = (props: TicketDetail
     error,
   } = useTicketDetails(params.serviceId.toString(), params.customerName.toString());
   const { t } = useTranslation();
-  const messageKey = loading ? 'translation:waitMessage' : 'translation:welcomeTurn';
+  const messageKey = loading ? TRANSLATION_WAIT_MESSAGE_KEY : TRANSLATION_WELCOME_TURN_KEY;
   return (
     <AppView
       headerMessage={t(messageKey, { service: params.serviceLabel.toString(), customer: params.customerName.toString() })}

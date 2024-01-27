@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import useDeviceId from '../../hooks/useDeviceId';
+import { TRANSLATION_ID_KEY, TRANSLATION_INFORMATION_KEY } from '../../common/translations/translation-keys';
 import { AppView, ConditionalContainer } from '../../common/components';
-
+import Title from './Title';
 
 /**
  * InformationViewProps defines the props for the Information View Component.
@@ -21,7 +22,7 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
   const { data, loading, error } = useDeviceId();
   return (
     <AppView
-      headerMessage={t('translation:information')}
+      headerMessage={t(TRANSLATION_INFORMATION_KEY)}
       loading={loading}
       error={error}
     >
@@ -29,15 +30,10 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
         <List.Accordion
           title=""
           style={styles.container}
-          left={props => (
-            <View style={styles.title}>
-              <List.Icon {...props} icon="information" />
-              <Text style={styles.titleText}>{t('translation:details')}</Text>
-            </View>
-          )}
+          left={Title}
         >
           <List.Item
-            title={t('translation:id')}
+            title={t(TRANSLATION_ID_KEY)}
             description={data?.deviceId}
           />
         </List.Accordion>
@@ -47,16 +43,6 @@ const InformationView: React.FC<InformationViewProps> = (props: InformationViewP
 };
 
 const styles = StyleSheet.create({
-  title: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '50%',
-  },
-  titleText: {
-    paddingLeft: 10,
-    fontSize: 16
-  },
   container: {
     width: '100%',
     maxWidth: 500,
