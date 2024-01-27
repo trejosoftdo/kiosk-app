@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
+import { TRANSLATION_USERS_IN_QUEUE_KEY } from '../../common/translations/translation-keys';
+
 
 /**
  * UsersInQueueProps defines the props for the Users In Queue Component.
@@ -21,7 +23,7 @@ const UsersInQueue: React.FC<UsersInQueueProps> = (props: UsersInQueueProps) => 
   const { t } = useTranslation();
   return (
     <Text style={styles.container} variant="titleMedium">
-      {t('translation:usersInQueue', { total: props.total })}
+      {t(TRANSLATION_USERS_IN_QUEUE_KEY, { total: props.total })}
     </Text>
   );
 };

@@ -5,6 +5,7 @@ import { AppView, Cards, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import useCategories from '../../hooks/useCategories';
 import { SERVICES_PATH } from '../../common/constants';
+import { TRANSLATION_CHOOSE_CATEGORY_MESSAGE_KEY, TRANSLATION_WAIT_MESSAGE_KEY } from '../../common/translations/translation-keys';
 
 
 /**
@@ -25,7 +26,7 @@ const ChooseCategoriesView: React.FC<ChooseCategoriesViewProps> = (props: Choose
     error,
   } = useCategories();
   const { t } = useTranslation();
-  const messageKey = loading ? 'translation:waitMessage' : 'translation:chooseCategoryMessage';
+  const messageKey = loading ? TRANSLATION_WAIT_MESSAGE_KEY : TRANSLATION_CHOOSE_CATEGORY_MESSAGE_KEY;
   return (
     <AppView
       headerMessage={t(messageKey)}

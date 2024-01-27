@@ -13,7 +13,7 @@ import { HOME_PATH } from '../../common/constants';
 import { getMessageKey } from './helpers';
 import ConnectForm from './ConnectForm';
 import VerificationQRCode from './VerificationQRCode';
-
+import { TRANSLATION_RECONNECT_MESSAGE_KEY, TRANSLATION_RETURN_MESSAGE_KEY } from '../../common/translations/translation-keys';
 
 
 /**
@@ -46,7 +46,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
       <ConditionalContainer display={!!connectionDetails?.deviceCode}>
         <ActionButton
           icon="connection"
-          message={t('translation:reconnect')}
+          message={t(TRANSLATION_RECONNECT_MESSAGE_KEY)}
           onPress={() => {
             clear();
           }}
@@ -69,7 +69,7 @@ const ConnectionView: React.FC<ConnectionViewProps> = (props: ConnectionViewProp
       <ConditionalContainer display={!!data?.tokens?.accessToken}>
         <ActionButton
           icon="arrow-left-top"
-          message={t('translation:return')}
+          message={t(TRANSLATION_RETURN_MESSAGE_KEY)}
           onPress={() => {
             goToPath(HOME_PATH);
           }}

@@ -41,3 +41,15 @@ export const CATEGORIES_PATH = '/categories';
 export const CONFIGURATION_PATH = '/configuration';
 
 export const NO_OP = () => {};
+
+
+export const LANGUAGES = {
+  SPANISH: 'es',
+  ENGLISH: 'en',
+};
+
+export const CONFIG_OPTIONS = {
+  INFORMATION: 'information',
+  CONNECTION: 'connection',
+  LANGUAGE: 'language',
+};

@@ -5,6 +5,7 @@ import { AppView, Cards, ConditionalContainer } from '../../common/components';
 import { goToPath } from '../../common/helpers';
 import useServices from '../../hooks/useServices';
 import { TICKET_DETAILS_PATH } from '../../common/constants';
+import { TRANSLATION_CHOOSE_SERVICE_MESSAGE_KEY, TRANSLATION_WAIT_MESSAGE_KEY } from '../../common/translations/translation-keys';
 
 
 /**
@@ -25,7 +26,7 @@ const ChooseServicesView: React.FC<ChooseServicesViewProps> = (props: ChooseServ
     error,
   } = useServices(+params.categoryId.toString());
   const { t } = useTranslation();
-  const messageKey = loading ? 'translation:waitMessage' : 'translation:chooseServiceMessage';
+  const messageKey = loading ? TRANSLATION_WAIT_MESSAGE_KEY : TRANSLATION_CHOOSE_SERVICE_MESSAGE_KEY;
   return (
     <AppView
       headerMessage={t(messageKey, { category: params.categoryLabel })}

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, TextInput } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { EMPTY_VALUE } from '../../common/constants';
+import { TRANSLATION_CONTINUE_KEY, TRANSLATION_NAME_KEY } from '../../common/translations/translation-keys';
 import ActionButton from '../../common/components/ActionButton';
 import AppLightTheme from '../../common/theme';
-import { EMPTY_VALUE } from '../../common/constants';
-
 
 /**
  * CustomerDataForm Props defines the props for the Customer Data Form Component.
@@ -29,9 +29,11 @@ const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFo
       <Card.Content>
         <TextInput
           style={styles.input}
-          label={t('translation:name')}
+          label={t(TRANSLATION_NAME_KEY)}
           value={name}
-          onChangeText={text => setName(text)}
+          onChangeText={text => {
+            setName(text);
+          }}
           mode="flat"
           left={<TextInput.Icon icon="account" />}
         />
@@ -39,10 +41,10 @@ const CustomerDataForm: React.FC<CustomerDataFormProps> = (props: CustomerDataFo
       <Card.Actions style={styles.action}>
         <ActionButton
           icon="page-next"
-          message={t('translation:continue')}
+          message={t(TRANSLATION_CONTINUE_KEY)}
           onPress={() => {
-            setName(EMPTY_VALUE);
             props.onSubmit(name);
+            setName(EMPTY_VALUE);
           }}
         />
       </Card.Actions>
