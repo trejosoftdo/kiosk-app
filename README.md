@@ -56,7 +56,24 @@ npm test
 
 Run the next command to run the unit tests and covergae:
 ```
-npm test:coverage
+npm run test:coverage
+```
+
+### Linting
+To run the linter, execute:
+```
+npm run lint
+```
+
+To fix the issues, run:
+```
+npm run lint:fix
+```
+
+### Types Check
+To check the types, run:
+```
+npm run types:check
 ```
 
 ## Building and Deploying

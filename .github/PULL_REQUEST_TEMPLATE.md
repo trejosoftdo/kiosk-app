@@ -32,6 +32,7 @@ assignees: ''
 - [ ] I have updated the documentation if needed.
 - [ ] I have added or modified unit tests (if applicable).
 - [ ] I have run `npm run lint` and fixed any issues.
+- [ ] I have run `npm run types:check` and fixed any issues.
 - [ ] My code follows the project's coding style guidelines.
 - [ ] I have added comments in the code where necessary.
 - [ ] I have updated relevant documentation (README, etc.).
