@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import ActionButton from '../../common/components/ActionButton';
 import AppLightTheme from '../../common/theme';
 import { EMPTY_VALUE } from '../../common/constants';
+import { TRANSLATION_APPLICATION_KEY, TRANSLATION_CONNECT_KEY } from '../../common/translations/translation-keys';
 
 
 /**
@@ -29,7 +30,7 @@ const ConnectForm: React.FC<ConnectFormProps> = (props: ConnectFormProps) => {
       <Card.Content>
         <TextInput
           style={styles.input}
-          label={t('translation:application')}
+          label={t(TRANSLATION_APPLICATION_KEY)}
           value={applicationId}
           onChangeText={text => setApplicationId(text)}
           mode="flat"
@@ -39,7 +40,7 @@ const ConnectForm: React.FC<ConnectFormProps> = (props: ConnectFormProps) => {
       <Card.Actions style={styles.action}>
         <ActionButton
           icon="connection"
-          message={t('translation:connect')}
+          message={t(TRANSLATION_CONNECT_KEY)}
           onPress={() => {
             props.onSubmit(applicationId);
           }}

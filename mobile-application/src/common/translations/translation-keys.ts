@@ -41,3 +41,23 @@ export const TRANSLATION_WELCOME_TURN_KEY = 'translation:welcomeTurn';
 export const TRANSLATION_USERS_IN_QUEUE_KEY = 'translation:usersInQueue';
 
 export const TRANSLATION_PRINT_TICKET_KEY = 'translation:printTicket';
+
+export const TRANSLATION_OPTIONS_KEY = 'translation:options';
+
+export const TRANSLATION_CONFIG_MESSAGE_KEY = 'translation:configMessage';
+
+export const TRANSLATION_RECONNECT_MESSAGE_KEY = 'translation:reconnect';
+
+export const TRANSLATION_RETURN_MESSAGE_KEY = 'translation:return';
+
+export const TRANSLATION_CONNECT_KEY = 'translation:connect';
+
+export const TRANSLATION_APPLICATION_KEY = 'translation:application';
+
+export const TRANSLATION_CONNECTED_MESSAGE_KEY = 'translation:alreadyConnectedMessage';
+
+export const TRANSLATION_SUCCESS_CONNECTION_MESSAGE_KEY = 'translation:successConnectionMessage';
+
+export const TRANSLATION_TO_CONNECT_MESSAGE_KEY = 'translation:toConnectMessage';
+
+export const TRANSLATION_INITIAL_CONNECT_MESSAGE_KEY = 'translation:initialConnetMessage';
