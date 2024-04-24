@@ -1,12 +1,3 @@
----
-name: Pull Request
-about: Create a pull request to merge changes into the main branch
-title: "[Feature/Fix] Your Pull Request Title"
-labels: ''
-assignees: ''
-
----
-
 ## Description
 
 <!-- Provide a brief description of your changes and their purpose. -->

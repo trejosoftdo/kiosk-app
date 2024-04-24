@@ -5,18 +5,18 @@ import { NO_OP } from './constants';
 /**
  * Hook to show the progress of a promise
  * 
- * @param  {Promise<T>} promise
+ * @param  {() => Promise<T>} loadData
  * @param  {(data:any)=>T=null} mapper
  * @returns Progress<T>
  */
-export const useProgress = <T>(promise: Promise<T>, mapper: (data: any) => T = null): Progress<T> => {
+export const useProgress = <T>(loadData: () => Promise<T>, mapper: (data: any) => T = null): Progress<T> => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<T | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    promise.then(data => {
+    loadData().then(data => {
       if (mapper) {
         setData(mapper(data));
       } else {

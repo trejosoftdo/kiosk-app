@@ -7,14 +7,19 @@ const flushPromises = () => new Promise(setImmediate);
 describe('Hooks', () => {
 
   describe('useProgress', () => {
+    const mockLoad = jest.fn();
     const mockData = {
       title: 'Testing promises',
     };
 
+    beforeEach(() => {
+      jest.resetAllMocks();
+    });
+
     it('indicates the progress of the promise', async () => {
-      const promise = Promise.resolve(mockData);
-      const { result } = renderHook(() => useProgress(promise));
-      
+      mockLoad.mockResolvedValue(mockData);
+      const { result } = renderHook(() => useProgress(mockLoad));
+    
       await act(() => flushPromises());
 
       expect(result.current.data).toEqual(mockData);
@@ -23,9 +28,9 @@ describe('Hooks', () => {
     });
 
     it('maps the data when a mapper is specified', async () => {
+      mockLoad.mockResolvedValue(mockData);
       const mapper = (x) => ({ title: `Mapped: ${x.title}`});
-      const promise = Promise.resolve(mockData);
-      const { result } = renderHook(() => useProgress(promise, mapper));
+      const { result } = renderHook(() => useProgress(mockLoad, mapper));
       
       await act(() => flushPromises());
 
@@ -38,8 +43,8 @@ describe('Hooks', () => {
 
     it('indicates when an error has ocurred', async () => {
       const mockError = new Error('Mock error');
-      const promise = Promise.reject(mockError);
-      const { result } = renderHook(() => useProgress(promise));
+      mockLoad.mockRejectedValue(mockError);
+      const { result } = renderHook(() => useProgress(mockLoad));
       
       await act(() => flushPromises());
 

@@ -13,10 +13,10 @@ describe('useCategories hook', () => {
 
   beforeEach(() => {
     loadCategories.mockResolvedValue(mockCategories);
-    useProgress.mockImplementation(async (promise) => ({
+    useProgress.mockImplementation(async (load) => ({
       loading: false,
       error: null,
-      data: await promise,
+      data: await load(),
     }));
   });
 
@@ -34,6 +34,6 @@ describe('useCategories hook', () => {
     expect(loadCategories).toHaveBeenCalledTimes(1);
     expect(loadCategories).toHaveBeenCalledWith();
     expect(useProgress).toHaveBeenCalledTimes(1);
-    expect(useProgress).toHaveBeenCalledWith(expect.any(Promise));
+    expect(useProgress).toHaveBeenCalledWith(expect.any(Function));
   });
 });

@@ -14,10 +14,10 @@ describe('useTicketDetails hook', () => {
 
   beforeEach(() => {
     loadTicketDetails.mockResolvedValue(mockTicketDetails);
-    useProgress.mockImplementation(async (promise) => ({
+    useProgress.mockImplementation(async (load) => ({
       loading: false,
       error: null,
-      data: await promise,
+      data: await load(),
     }));
   });
 
@@ -35,6 +35,6 @@ describe('useTicketDetails hook', () => {
     expect(loadTicketDetails).toHaveBeenCalledTimes(1);
     expect(loadTicketDetails).toHaveBeenCalledWith(mockService, mockCustomerName);
     expect(useProgress).toHaveBeenCalledTimes(1);
-    expect(useProgress).toHaveBeenCalledWith(expect.any(Promise));
+    expect(useProgress).toHaveBeenCalledWith(expect.any(Function));
   });
 });
