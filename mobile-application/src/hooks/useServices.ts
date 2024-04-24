@@ -7,6 +7,6 @@ import { loadServices } from "../common/services/service";
  * @param {number} categoryId
  * @returns Progress<ServicesData>
  */
-const useServices = (categoryId: number): Progress<ServicesData> => useProgress<ServicesData>(loadServices(categoryId));
+const useServices = (categoryId: number): Progress<ServicesData> => useProgress<ServicesData>(() => loadServices(categoryId));
 
 export default useServices;
